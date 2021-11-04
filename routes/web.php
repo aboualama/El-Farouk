@@ -7,20 +7,21 @@ use App\Http\Controllers\FormsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\ChartsController;
-use App\Http\Controllers\LanguageController; 
 use App\Http\Controllers\ExtensionController;
+use App\Http\Controllers\LanguageController; 
 use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\PageLayoutController;
-
-use App\Http\Controllers\Dashboard\DashboardController;
-use  App\Http\Controllers\Dashboard\UserController;    
-use App\Http\Controllers\Dashboard\SettingController;  
-
-
 
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\UserInterfaceController;
 use App\Http\Controllers\AuthenticationController; 
+
+
+
+use App\Http\Controllers\Dashboard\EmployeeController;
+use  App\Http\Controllers\Dashboard\UserController;    
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\SettingController;  
  
 
 Auth::routes(['verify' => true , 'register' => false]);
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 
 
+  Route::resource('employee', EmployeeController::class);
 
 
 

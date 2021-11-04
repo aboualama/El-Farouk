@@ -102,6 +102,35 @@ $configData = Helper::applClasses();
 
 
 
+      <li class="nav-item {{ Route::currentRouteName() === ''  ? 'active' : '' }} {{ $custom_classes }}">
+        <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
+          <i data-feather="user"></i>
+          <span class="menu-title text-truncate">الموظفين</span> 
+        </a>  
+        <ul class="menu-content"> 
+          <li class="{{ Route::currentRouteName() === "employee.index"  ? 'active' : '' }} " >
+          {{-- <li class="{{ Route::currentRouteName() === "employee.index"  ? 'active' : '' }} disabled" > --}}
+            <a href="/employee" class="d-flex align-items-center" target="_self"> 
+              <i data-feather="circle"></i> 
+              <span class="menu-item text-truncate">قائمة الموظفين</span>
+            </a> 
+          </li> 
+          <li class="{{ Route::currentRouteName() === "employees.show"  ? 'active' : 'disabled' }}">
+            <a href="/employee/view" class="d-flex align-items-center" target="_self"> 
+              <i data-feather="{{ Route::currentRouteName() === "employees.show"  ? 'eye' : 'eye-off' }}"></i>  
+              <span class="menu-item text-truncate">عرض بيانات موظف</span>
+            </a> 
+          </li> 
+          <li class="{{ Route::currentRouteName() === "employees.edit"  ? 'active' : 'disabled' }}">
+            <a href="/employee/edit" class="d-flex align-items-center" target="_self"> 
+              <i data-feather="{{ Route::currentRouteName() === "employees.edit"  ? 'eye' : 'eye-off' }}"></i>  
+              <span class="menu-item text-truncate">تعديل بيانات موظف</span>
+            </a> 
+          </li> 
+        </ul> 
+      </li> 
+     
+
 
 
 
