@@ -154,19 +154,48 @@ $(function () {
     });
     $(verticalWizard)
       .find('.btn-next')
-      .on('click', function () {
+      .on('click', function (e) {
+        e.preventDefault(); 
         verticalStepper.next();
       });
     $(verticalWizard)
       .find('.btn-prev')
-      .on('click', function () {
+      .on('click', function (e) {
+        e.preventDefault(); 
         verticalStepper.previous();
       });
 
     $(verticalWizard)
       .find('.btn-submit')
-      .on('click', function () {
-        alert('Submitted..!!');
+      .on('click', function (e) {
+        e.preventDefault(); 
+        // alert('Submitted..!!');
+ 
+
+        var url = $("#url").val(); 
+        var formData = new FormData($('#jquery-val-form')[0]); 
+        $.ajax({
+            type: 'post', 
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {  
+                    toastr['success'](
+                          'تم اضافة موظف جديد بنجاح ',
+                          '  ادارة الموظفين ' ,
+                          {
+                            closeButton: true,
+                            tapToDismiss: false, 
+                            positionClass: 'toast-top-right',
+                            rtl: 'rtl'
+                          }
+                        );    
+            }, error: function (xhr) {
+
+            }
+        });
       });
   }
 

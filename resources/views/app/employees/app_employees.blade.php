@@ -1,3 +1,4 @@
+ 
 
 @extends('layouts/contentLayoutMaster')
 
@@ -7,11 +8,19 @@
 @section('vendor-style') 
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.min.css')) }}"> 
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">  
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/pickers/pickadate/pickadate.css')) }}">  
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/pickers/flatpickr/flatpickr.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/wizard/bs-stepper.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
 @endsection
 
 @section('page-style') 
   <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/extensions/ext-component-toastr.css')) }}"> 
   <link rel="stylesheet" href="{{asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css'))}}"> 
+  <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/pickers/form-flat-pickr.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/pickers/form-pickadate.css')) }}"> 
+  <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/form-validation.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/form-wizard.css')) }}">
 @endsection 
  
 
@@ -38,17 +47,12 @@
                       </div>
                     </section> 
                   </div>    
-                  <div class="row"> 
-                    {{-- @foreach ($categories as $category)   
-                      <div class="col-md-6">
-                        <div class="form-group"> 
-                          {{$category->name}} 
-                        </div>
-                      </div>  
-                    @endforeach  --}}
+                  <div class="row">  
                   </div>  
                   <div >
-                    <button type="submit" class="btn btn-secondary btn-block waves-effect waves-float waves-light" data-toggle="modal" data-target="#category">  اضافة قسم جديد </button> 
+                    <button type="submit" class="btn btn-secondary btn-block waves-effect waves-float waves-light" data-toggle="modal" data-target="#category">  
+                      أضافة بيانات موظف جديد
+                    </button> 
                   </div> 
                 </div>   
               </div>  
@@ -70,7 +74,7 @@
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title text-secondary" id="myModalLabel17">أضافة قسم جديد</h4>
+        <h4 class="modal-title text-secondary" id="myModalLabel17">أضافة بيانات موظف جديد</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -80,151 +84,7 @@
             <div class="col-12">
               <div class="card"> 
                 <div class="card-body">
-                  <form id="jquery-val-form">  
-                
-                    <div class="tab-content">
-                      <!-- Account Tab starts -->
-                      <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel"> 
-                        <div class="row"> 
-  
-                          <input type="hidden" value="custody" id="url">  
-  
-                          <div class="col-12">
-                            <div class="row">  
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                  <label for="first_name">  الاسم الاول</label> 
-                                  <input type="number" class="form-control" name="first_name" id="first_name" placeholder=" الإسم الأول" required  />  
-                                </div>
-                              </div> 
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                  <label for="last_name"> إسم الأب </label> 
-                                  <input  type="text" id="last_name" class="form-control" name="last_name" placeholder="إسم الأب" required>  
-                                </div>
-                              </div> 
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                  <label for="middle_name"> إسم الجد</label> 
-                                  <input type="text" class="form-control" name="middle_name" id="middle_name" placeholder=" إسم الجد" required  />  
-                                </div>
-                              </div>   
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                  <label for="family_name"> لقب العائلة </label> 
-                                  <input  type="text" id="family_name" class="form-control" name="family_name" placeholder="لقب العائلة" required>  
-                                </div>
-                              </div>     
-                            </div> 
-                          </div>     
-                          <div class="col-md-12"> 
-                            <div class="row">  
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="national_id"> الرقم القومي</label> 
-                                  <input type="number" class="form-control" name="national_id" id="national_id" placeholder=" " required  />  
-                                </div>
-                              </div> 
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="gender"> النوع</label> 
-                                  <input type="text" class="form-control" name="gender" id="gender" placeholder=" النوع" required  />  
-                                </div>
-                              </div>        
-                            </div> 
-                          </div>     
-                          <div class="col-md-12"> 
-                            <div class="row">  
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="quantity"> الكمية</label> 
-                                  <input type="number" class="form-control" name="quantity" id="quantity" placeholder=" " required  />  
-                                </div>
-                              </div>   
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="insert_date">تاريخ الادخال </label> 
-                                  <input  type="text" id="fp-default" class="form-control flatpickr-basic" name="insert_date" placeholder="YYYY-MM-DD" required>  
-                                </div>
-                              </div>     
-                            </div> 
-                          </div>    
-                          <div class="col-md-12"> 
-                            <div class="row">  
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="social_status"> الحالة الاجتماعية </label> 
-                                  <select class="form-control" name="social_status"  id="social_status" required> 
-                                    <option value="">.........  </option>
-                                    <option  value="single">single</option> 
-                                    <option  value="married">married</option> 
-                                    <option  value="divorced">divorced</option> 
-                                    <option  value="widow">widow</option> 
-                                  </select>
-                                </div>
-                              </div> 
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="social_status"> الحالة الاجتماعية </label> 
-                                  <select class="form-control" name="social_status"  id="social_status" required> 
-                                    <option value="">.........  </option>
-                                    <option  value="single">single</option> 
-                                    <option  value="married">married</option> 
-                                    <option  value="divorced">divorced</option> 
-                                    <option  value="widow">widow</option> 
-                                  </select>
-                                </div>
-                              </div>   
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="city"> المدينة </label> 
-                                  <input  type="text" id="city" class="form-control" name="city" placeholder="المدينة" required>  
-                                </div>
-                              </div>     
-                            </div> 
-                          </div>  
-                          <div class="col-md-12"> 
-                            <div class="row">  
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="quantity"> الرقم </label> 
-                                  <input type="number" class="form-control" name="quantity" id="quantity" placeholder=" " required  />  
-                                </div>
-                              </div> 
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="social_status"> الحالة الاجتماعية </label> 
-                                  <select class="form-control" name="social_status"  id="social_status" required> 
-                                    <option value="">.........  </option>
-                                    <option  value="single">single</option> 
-                                    <option  value="married">married</option> 
-                                    <option  value="divorced">divorced</option> 
-                                    <option  value="widow">widow</option> 
-                                  </select>
-                                </div>
-                              </div>   
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="city"> المدينة </label> 
-                                  <input  type="text" id="city" class="form-control" name="city" placeholder="المدينة" required>  
-                                </div>
-                              </div>     
-                            </div> 
-                          </div>    
-                    
-                          
-                          <div class="col-12 ">
-                            <button type="submit" id="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">   
-                              <span>أضافة</span>
-                            </button> 
-                          </div>
-                              
-                        </div> 
-                      </div> 
-              
-              
-                    </div>
-                  </form> 
+                  @include('app.employees.add')
                 </div>
               </div>
             </div> 
@@ -234,8 +94,7 @@
   </div>
 </div> 
 <!-- Modal category-->
- 
- 
+  
 @endsection
 
 
@@ -243,11 +102,21 @@
   <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>  
   <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>   
   <script src="{{ asset(mix('js/scripts/confirm-delete.js')) }}"></script> 
+  <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.date.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.time.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/pickers/pickadate/legacy.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/pickers/flatpickr/flatpickr.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/forms/wizard/bs-stepper.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/forms/validation/jquery.validate.min.js')) }}"></script>
 @endsection  
 
 
 @section('page-script') 
   <script src="{{ asset(mix('js/scripts/extensions/ext-component-sweet-alerts.js')) }}"></script>
+  <script src="{{ asset(mix('js/scripts/forms/pickers/form-pickers.js')) }}"></script> 
+  <script src="{{ asset(mix('js/scripts/forms/form-wizard.js')) }}"></script>
   
   <script> 
     $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
@@ -267,12 +136,12 @@
       if($(this).val().length > 13)
       {
         $('#gender').val((gender % 2 == 0) ? 'انثي' : 'ذكر');
-        $('#city').val(city[code]);
-        $('#fp-default').val(year + '-' + month + '-' + day);
+        $('#birth_city').val(city[code]);
+        $('#birth_date').val(year + '-' + month + '-' + day);
       }else{
         $('#gender').val('');
-        $('#city').val('');
-        $('#fp-default').val('');
+        $('#birth_city').val('');
+        $('#birth_date').val('');
       }  
     }); 
  
@@ -280,41 +149,41 @@
  
 	
 
-    $(document).on('click', '#submit', function (e) {
-      e.preventDefault(); 
-      if($('#jquery-val-form').valid()) {  
-        var url = $("#url").val(); 
-        var formData = new FormData($('#jquery-val-form')[0]); 
-        $.ajax({
-            type: 'post',
-            enctype: 'multipart/form-data',
-            url: url,
-            data: formData,
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function (data) {  
-                    toastr['success'](
-                          'تم اضافة عهدة جديدة بنجاح ',
-                          '  العهدة  ' ,
-                          {
-                            closeButton: true,
-                            tapToDismiss: false, 
-                            positionClass: 'toast-top-right',
-                            rtl: 'rtl'
-                          }
-                        );   
-                $('#category').val("");
-                $('#type').empty();
-                $('#type').append('<option> اختار نوع العهدة اولا</option>');
-                $('.clear_form').fadeOut();     
-            }, error: function (xhr) {
+    // $(document).on('click', '#submit', function (e) {
+    //   e.preventDefault(); 
+    //   if($('#jquery-val-form').valid()) {  
+    //     var url = $("#url").val(); 
+    //     var formData = new FormData($('#jquery-val-form')[0]); 
+    //     $.ajax({
+    //         type: 'post',
+    //         enctype: 'multipart/form-data',
+    //         url: url,
+    //         data: formData,
+    //         processData: false,
+    //         contentType: false,
+    //         cache: false,
+    //         success: function (data) {  
+    //                 toastr['success'](
+    //                       'تم اضافة عهدة جديدة بنجاح ',
+    //                       '  العهدة  ' ,
+    //                       {
+    //                         closeButton: true,
+    //                         tapToDismiss: false, 
+    //                         positionClass: 'toast-top-right',
+    //                         rtl: 'rtl'
+    //                       }
+    //                     );   
+    //             $('#category').val("");
+    //             $('#type').empty();
+    //             $('#type').append('<option> اختار نوع العهدة اولا</option>');
+    //             $('.clear_form').fadeOut();     
+    //         }, error: function (xhr) {
 
-            }
-        });
+    //         }
+    //     });
         
-      }
-    });
+    //   }
+    // });
         
   
   </script>   
