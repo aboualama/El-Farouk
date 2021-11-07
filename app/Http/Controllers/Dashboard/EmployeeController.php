@@ -23,6 +23,10 @@ class EmployeeController extends Controller
  
     public function store(Request $request)
     {
+        $record = new Employee;
+
+        $data = $request->except(['social_status', 'health_status', 'military_treatment', 'health_status', 'health_status']);
+        $record->create($data);
        dd($request->all());
     }
  
@@ -45,4 +49,12 @@ class EmployeeController extends Controller
     {
         //
     }
+
+    public function getemployees()
+  {
+    $data['data'] = Employee::all(); 
+    return $data ;
+  }
+
+ 
 }

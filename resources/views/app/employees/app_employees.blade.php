@@ -2,7 +2,7 @@
 
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'بيانات المدرسة')
+@section('title', 'بيانات الموظف')
 
 
 @section('vendor-style') 
@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/pickers/flatpickr/flatpickr.min.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/wizard/bs-stepper.min.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/dataTables.bootstrap4.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/responsive.bootstrap4.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/buttons.bootstrap4.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/rowGroup.bootstrap4.min.css')) }}">
 @endsection
 
 @section('page-style') 
@@ -26,51 +30,45 @@
 
 @section('content') 
 
-   
-<div class="row">
-  <div class="col-md-12">
-    <section class="app-user-edit">
-      <div class="card">
-        <div class="card-body"> 
-          <div class="tab-content"> 
-            <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel"> 
-              <div class="row"> 
-                <div class="col-md-12"  id="section_inputs">   
-                  <div class="row"> 
-                    <section id="divider-text-position" style="width: 98%; margin: auto;">
-                      <div class="row">
-                        <div class="col-md-12"> 
-                            <div class="divider divider-left divider-secondary">
-                              <div class="divider-text text-secondary">أقسام العهدة</div>
-                            </div>   
-                        </div>
-                      </div>
-                    </section> 
-                  </div>    
-                  <div class="row">  
-                  </div>  
-                  <div >
-                    <button type="submit" class="btn btn-secondary btn-block waves-effect waves-float waves-light" data-toggle="modal" data-target="#category">  
-                      أضافة بيانات موظف جديد
-                    </button> 
-                  </div> 
-                </div>   
-              </div>  
-            </div>  
-          </div>
-        </div>
-      </div>
-    </section> 
+
+  <!-- users filter start -->
+  <div class="card">
+    <h5 class="card-header">تصفية النتائج</h5>
+    <div class="d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2"> 
+      <div class="col-md-4 user_role"></div>
+      <div class="col-md-4 user_plan"></div>
+      <div class="col-md-4 user_status"></div>
+    </div>
   </div>
- 
-  
-</div>
- 
+  <!-- users filter end -->
+
+<!-- Basic table -->
+<section id="basic-datatable">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <table class="datatables-basic table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>id</th>
+              <th>الاسم</th>
+              <th>رقم التليفون</th> 
+              <th>الوظيفة</th>
+              <th>الحالة</th>
+              <th>حذف </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
  
  
 
-<!-- Modal category -->
-<div class="modal fade text-left" id="category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true" >
+<!-- Modal new_employee -->
+<div class="modal fade text-left" id="new_employee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,11 +80,11 @@
         <div class="modal-body">   
           <div class="row">   
             <div class="col-12">
-              <div class="card"> 
-                <div class="card-body">
+              {{-- <div class="card">  --}}
+                {{-- <div class="card-body"> --}}
                   @include('app.employees.add')
-                </div>
-              </div>
+                {{-- </div> --}}
+              {{-- </div> --}}
             </div> 
           </div> 
         </div> 
@@ -110,6 +108,20 @@
   <script src="{{ asset(mix('vendors/js/forms/wizard/bs-stepper.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/forms/validation/jquery.validate.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/jquery.dataTables.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/datatables.bootstrap4.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/dataTables.responsive.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/responsive.bootstrap4.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/datatables.checkboxes.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/datatables.buttons.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/jszip.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/pdfmake.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/vfs_fonts.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/buttons.html5.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/buttons.print.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/tables/datatable/dataTables.rowGroup.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/forms/repeater/jquery.repeater.min.js')) }}"></script>
+  <script src="{{ asset(mix('js/scripts/confirm-delete.js')) }}"></script>
 @endsection  
 
 
@@ -118,75 +130,8 @@
   <script src="{{ asset(mix('js/scripts/forms/pickers/form-pickers.js')) }}"></script> 
   <script src="{{ asset(mix('js/scripts/forms/form-wizard.js')) }}"></script>
   
-  <script> 
-    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
-
-    
-  // change national_id
-  $('#national_id').on("keyup", function (e) {
-      e.stopPropagation(); 
-      var city = {"01": 'القاهرة', "02": 'الاسكندرية', "03": 'بورسعيد', "04": 'السويس', "11": 'دمياط', "12": 'الدقهليه', "13": 'الشرقية', "14": 'الدقهليه', "15": 'كفر الشيخ',  "16": 'الغربيه', "17": 'المنوفيه', "18": 'البحيره', "19": 'الاسماعليه', "21": 'الجيزه', "22": 'بنى سويف', "23": 'الفيوم', "24": 'المنيا', "25": 'اسيوط', "26": 'سوهاج', "27": 'قنا', "28": 'اسوان', "29": 'الاقصر', "31": 'البحر الاحمر', "32": 'الوادى الجديد', "33": 'مطروح', "34": 'شمال سيناء', "35": 'جنوب سيناء', "88": 'خارج الجمهورية', }; 
-      var id = $('#national_id').val();
-      var gender = id.substring(13, 1); 
-      var year = parseInt((id.substring(0, 1) == 2) ? 1900 : 2000) + parseInt(id.substring(1, 3)); 
-      var month = id.substring(3, 5);
-      var day = id.substring(5, 7);
-      var code = id.substring(7, 9);
-
-      if($(this).val().length > 13)
-      {
-        $('#gender').val((gender % 2 == 0) ? 'انثي' : 'ذكر');
-        $('#birth_city').val(city[code]);
-        $('#birth_date').val(year + '-' + month + '-' + day);
-      }else{
-        $('#gender').val('');
-        $('#birth_city').val('');
-        $('#birth_date').val('');
-      }  
-    }); 
+  <script src="{{ asset(mix('js/scripts/forms/form-repeater.js')) }}"></script>
+  <script src="{{ asset(mix('js/scripts/z-customJs/employee-datatables.js')) }}"></script>   
  
-	
  
-	
-
-    // $(document).on('click', '#submit', function (e) {
-    //   e.preventDefault(); 
-    //   if($('#jquery-val-form').valid()) {  
-    //     var url = $("#url").val(); 
-    //     var formData = new FormData($('#jquery-val-form')[0]); 
-    //     $.ajax({
-    //         type: 'post',
-    //         enctype: 'multipart/form-data',
-    //         url: url,
-    //         data: formData,
-    //         processData: false,
-    //         contentType: false,
-    //         cache: false,
-    //         success: function (data) {  
-    //                 toastr['success'](
-    //                       'تم اضافة عهدة جديدة بنجاح ',
-    //                       '  العهدة  ' ,
-    //                       {
-    //                         closeButton: true,
-    //                         tapToDismiss: false, 
-    //                         positionClass: 'toast-top-right',
-    //                         rtl: 'rtl'
-    //                       }
-    //                     );   
-    //             $('#category').val("");
-    //             $('#type').empty();
-    //             $('#type').append('<option> اختار نوع العهدة اولا</option>');
-    //             $('.clear_form').fadeOut();     
-    //         }, error: function (xhr) {
-
-    //         }
-    //     });
-        
-    //   }
-    // });
-        
-  
-  </script>   
-
-@endsection
- 
+@endsection 

@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
 			$table->string('birth_address');
 			$table->datetime('birth_date');
 			$table->datetime('join_date');
-			$table->enum('gender', array('male', 'female'));
+			$table->enum('gender', array('ذكر', 'انثي'))->nullable();
 			$table->enum('health_status', array('healthy', 'disabled'));
 			$table->enum('social_status', array('single', 'married', 'divorced', 'widow'));
 			$table->enum('military_treatment', array('Exempted', 'TemporarilyExempt', 'Postponed', 'Finished'));

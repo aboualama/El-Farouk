@@ -165,38 +165,11 @@ $(function () {
         verticalStepper.previous();
       });
 
-    $(verticalWizard)
-      .find('.btn-submit')
-      .on('click', function (e) {
-        e.preventDefault(); 
-        // alert('Submitted..!!');
- 
-
-        var url = $("#url").val(); 
-        var formData = new FormData($('#jquery-val-form')[0]); 
-        $.ajax({
-            type: 'post', 
-            url: url,
-            data: formData,
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function (data) {  
-                    toastr['success'](
-                          'تم اضافة موظف جديد بنجاح ',
-                          '  ادارة الموظفين ' ,
-                          {
-                            closeButton: true,
-                            tapToDismiss: false, 
-                            positionClass: 'toast-top-right',
-                            rtl: 'rtl'
-                          }
-                        );    
-            }, error: function (xhr) {
-
-            }
-        });
-      });
+    // $(verticalWizard)
+    //   .find('.btn-submit')
+    //   .on('click', function () { 
+    //     alert('Submitted..!!');  
+    //   });
   }
 
   // Modern Wizard
