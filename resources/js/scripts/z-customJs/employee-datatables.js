@@ -162,10 +162,7 @@
       buttons: [
         {
 
-
-
-
-
+  
 
           extend: 'collection',
           className: 'btn btn-outline-secondary dropdown-toggle mr-2',
@@ -223,11 +220,7 @@
           init: function (api, node, config) {
             $(node).removeClass('btn-secondary');
           }
-        }
-
-
-
-
+        } 
 
       ],
 
@@ -430,16 +423,12 @@
     //     .draw();
     //   count++;
     //   $('.modal').modal('hide');
-    // }
+    // }س
   });
 
 
 
-
-
-
-
-
+ 
 
   // change social_status
   $('#social_status').on("change", function (e) { 
@@ -453,6 +442,47 @@
 });
 
 
+
+
+
+
+  // change category
+  $('#category').on("change", function (e) {
+    e.stopPropagation();
+    var id = $('#category').val();
+    $.ajax({
+      type: 'GET',
+      data: { id: id },
+      url: '/get-type/',
+      success: function (data) {   
+            $('#type').empty();
+            $('#type').append('<option> .........</option>');
+            $('.clear_form').fadeOut();  
+            $.each(data,function(index,type){
+              $('#type').append('<option value="'+type.id+'">  '+ type.name +'</option>');
+            }) 
+      }
+    });
+  });
+ 
+// change type
+  $('#type').on("change", function (e) {
+    e.stopPropagation();
+    var category_id = $('#category').val();
+    var type_id = $('#type').val();
+    $.ajax({
+      type: 'GET',
+      data: { 
+        type_id: type_id , 
+        category_id: category_id
+      },
+      url: '/get-type-form/',
+      success: function (data) {  
+            $('#section_forms').html(data);
+      }
+    });
+  });
+    
 
 
 });

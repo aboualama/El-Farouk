@@ -56,5 +56,11 @@ class EmployeeController extends Controller
     return $data ;
   }
 
+//   public function get_type(Request $request)
+//   {
+//       $types = CustodyType::where('category_id', $request->id)->get(); 
+//       return $types;
+//   }
+
  
 }

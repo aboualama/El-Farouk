@@ -354,7 +354,7 @@
 
         <div id="job-info-vertical" class="content">
           <div class="content-header">
-            <h5 class="mb-0">البيانات jjjj  </h5>
+            <h5 class="mb-0">البيانات الوظيفية  </h5>
             <small class="text-muted">   مثل : الاسم والرقم القومي.</small>
           </div>
  
@@ -365,31 +365,37 @@
                 <div class="divider divider-left divider-secondary">
                   <div class="divider-text text-secondary"> الاسم بالكامل</div>
                 </div>   
-                <div class="row">  
-                  <div class="col-md-3">
+
+                <div class="row">    
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="join_date">تاريخ التوظيف </label> 
-                      <input  type="text" id="join_date" class="form-control flatpickr-basic" name="join_date" placeholder="YYYY-MM-DD" required>  
-                    </div>
+                      <label for="status">المجموعة الوظيفية </label>
+                      <select class="form-control" name="category_id" id="category" > 
+                        <option  value="">.........  </option>
+                        {{-- @foreach ($categories as $category) 
+                          <option value="{{$category->id}}">{{$category->name}}</option> 
+                        @endforeach --}}
+                      </select>
+                    </div> 
                   </div> 
-                  <div class="col-md-3">
+    
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="last_name"> إسم الأب </label> 
-                      <input  type="text" id="last_name" class="form-control" name="last_name" placeholder="إسم الأب" required>  
-                    </div>
+                      <label for="role"> المجموعة النوعية</label>
+                      <select class="form-control" name="custody_type_id" id="type"> 
+                        <option  value=""> اختار المجموعة الوظيفية اولا</option>
+                      </select>
+                    </div> 
                   </div> 
-                  <div class="col-md-3">
+    
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="middle_name"> إسم الجد</label> 
-                      <input type="text" class="form-control" name="middle_name" id="middle_name" placeholder=" إسم الجد" required  />  
-                    </div>
-                  </div>   
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label for="family_name"> لقب العائلة </label> 
-                      <input  type="text" id="family_name" class="form-control" name="family_name" placeholder="لقب العائلة" required>  
-                    </div>
-                  </div>     
+                      <label for="role">  المسمى الوظيفى </label>
+                      <select class="form-control" name="custody_type_id" id="type"> 
+                        <option  value=""> اختار المسمى الوظيفى </option>
+                      </select>
+                    </div> 
+                  </div>  
                 </div> 
               </div>  
   
@@ -439,6 +445,27 @@
           <div class="content-body">
             <div class="row"> 
               <div class="col-12">
+                <div class="row">   
+                  <div class="col-md-12"> 
+                    <div class="divider divider-left divider-secondary">
+                      <div class="divider-text text-secondary"> ارقام التليفونات </div>
+                    </div>   
+                    <div class="row">  
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="cell1"> رقم الهاتف / واتساب</label> 
+                          <input type="number" class="form-control" name="cell[]" id="cell1" placeholder="01223456789">  
+                        </div>
+                      </div>    
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="cell2"> رقم اخر </label> 
+                          <input  type="number" id="cell2" class="form-control" name="cell[]" placeholder="01223456789">  
+                        </div>
+                      </div>     
+                    </div> 
+                  </div>  
+                </div>
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label class="form-label" for="vertical-twitter">Twitter</label>
@@ -448,28 +475,18 @@
                     <label class="form-label" for="vertical-facebook">Facebook</label>
                     <input type="text" id="vertical-facebook" class="form-control" placeholder="https://facebook.com/abc" />
                   </div>
-                </div>
-                <div class="row">
-                  <div class="form-group col-md-6">
-                    <label class="form-label" for="vertical-google">Google+</label>
-                    <input type="text" id="vertical-google" class="form-control" placeholder="https://plus.google.com/abc" />
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label class="form-label" for="vertical-linkedin">Linkedin</label>
-                    <input type="text" id="vertical-linkedin" name="linkedin" class="form-control" placeholder="https://linkedin.com/abc" />
-                  </div>
-                </div>
+                </div> 
               </div> 
-            </div>
-          </div>
+            </div> 
+          </div> 
           <div class="d-flex justify-content-between next_prev">
             <button class="btn btn-primary btn-prev">
               <i data-feather="arrow-right" class="align-middle mr-sm-25 mr-0"></i>
               <span class="align-middle d-sm-inline-block d-none">السابق</span>
             </button>
             <button id="add_new_employee" class="btn btn-success btn-submit">
-              <span class="align-middle d-sm-inline-block d-none">حفظ</span> 
-              <i data-feather="save" class="align-middle mr-sm-25 mr-0"></i>
+              <span class="align-middle d-sm-inline-block d-none">  حفظ </span> 
+              <i data-feather="save" class="align-middle ml-sm-25 ml-0"></i>
             </button>
           </div>
         </div> 

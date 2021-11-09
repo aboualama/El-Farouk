@@ -2,7 +2,7 @@
 
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'بيانات الموظف')
+@section('title', 'قائمة الموظفين')
 
 
 @section('vendor-style') 

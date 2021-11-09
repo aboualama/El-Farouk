@@ -55,8 +55,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 
   Route::resource('employee', EmployeeController::class);
-  Route::get('employee/list/data', [EmployeeController::class,'getemployees'])->name('employee-datatables');  // note in controller
+  Route::get('employee/list/data', [EmployeeController::class,'getemployees'])->name('employee-datatables');   
 
+  // Route::get('get-type', [CustodyController::class,'get_type'])->name('get-type'); 
 
 
 
