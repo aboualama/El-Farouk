@@ -3,20 +3,21 @@
 ###### To install a follow the instructions below.
 
 
-# clone
-### git clone https://github.com/aboualama/El-Farouk.git
-### cd El-Farouk
-
-
-# Autoloader Optimization
-# $ composer update 
-# $ php artisan config:cache 
-# $ php artisan route:cache
-
-# Create .ENV files settings
-# $ cp .env.example .env
-
-# Create key APP_KEY in ENV file
-# $ php artisan key:gen
+## - Clone 
+###### git clone https://github.com/aboualama/El-Farouk.git
+###### cd El-Farouk
+######
+######
+## - Autoloader Optimization
+###### $ composer update 
+###### $ php artisan config:cache - $ php artisan route:cache
+######
+######
+## - Create .ENV files settings
+###### $ cp .env.example .env
+######
+######
+## - Create key APP_KEY in ENV file
+###### $ php artisan key:gen
 
 
