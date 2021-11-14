@@ -21,3 +21,5 @@
 ###### $ php artisan key:gen
 
 
+## License
+[El-Farouk](https://aboualama.com/)
