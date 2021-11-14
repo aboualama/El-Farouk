@@ -5,8 +5,10 @@
 
 ## - Clone 
 ```bash
-###### git clone https://github.com/aboualama/El-Farouk.git
-###### cd El-Farouk 
+ git clone https://github.com/aboualama/El-Farouk.git 
+```
+```bash 
+ cd El-Farouk 
 ```
 ######
 ######
