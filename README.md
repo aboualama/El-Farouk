@@ -1,3 +1,7 @@
+# clone
+### git clone https://github.com/aboualama/El-Farouk.git
+
+
 # install
 ## To install a follow the instructions below.
 
