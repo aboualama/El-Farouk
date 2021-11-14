@@ -1,5 +1,5 @@
 # install
-# To install a follow the instructions below.
+## To install a follow the instructions below.
 
 # Autoloader Optimization
 # $ composer update 
