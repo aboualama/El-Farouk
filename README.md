@@ -4,8 +4,10 @@
 
 
 ## - Clone 
+```bash
 ###### git clone https://github.com/aboualama/El-Farouk.git
-###### cd El-Farouk
+###### cd El-Farouk 
+```
 ######
 ######
 ## - Autoloader Optimization
