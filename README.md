@@ -31,18 +31,16 @@
 
 ## - Setup Database Configurations or import it
 ```bash 
- php artisan key:generate
+ php artisan migrate:fresh --seed
 ```
-######  
-######
-######
-## - Autoloader Optimization
-###### $ composer update 
-###### $ php artisan config:cache - $ php artisan route:cache
-######
-######
-######
-######
+ 
+## -  Optimization 
+```bash 
+ php artisan config:cache
+```
+```bash 
+ php artisan optimize:clear
+```
 
 
 ## License
