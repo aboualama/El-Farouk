@@ -1,9 +1,12 @@
-# clone
-### git clone https://github.com/aboualama/El-Farouk.git
-
 
 # install
-## To install a follow the instructions below.
+###### To install a follow the instructions below.
+
+
+# clone
+### git clone https://github.com/aboualama/El-Farouk.git
+### cd El-Farouk
+
 
 # Autoloader Optimization
 # $ composer update 
