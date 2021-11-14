@@ -39,9 +39,18 @@
           </span>
         </button>
       </div>
-      <div class="step" data-target="#job-info-vertical">
+      <div class="step" data-target="#qualification-info-vertical">
         <button type="button" class="step-trigger">
           <span class="bs-stepper-box">4</span>
+          <span class="bs-stepper-label">
+            <span class="bs-stepper-title"> بيانات المؤهل الدراسي</span>
+            <span class="bs-stepper-subtitle">  مثل : المؤهل وتاريخ التخرج والتقدير</span>
+          </span>
+        </button>
+      </div>
+      <div class="step" data-target="#job-info-vertical">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-box">5</span>
           <span class="bs-stepper-label">
             <span class="bs-stepper-title"> بيانات وظيفية</span>
             <span class="bs-stepper-subtitle">  مثل : الوظيفة الحالية والدرجة المالية</span>
@@ -50,7 +59,7 @@
       </div>
       <div class="step" data-target="#social-links-vertical">
         <button type="button" class="step-trigger">
-          <span class="bs-stepper-box">5</span>
+          <span class="bs-stepper-box">6</span>
           <span class="bs-stepper-label">
             <span class="bs-stepper-title"> بيانات التواصل </span>
             <span class="bs-stepper-subtitle">  مثل : ارقام التليفون | البريد الاليكتروني  </span>
@@ -148,9 +157,7 @@
             <small class="text-muted">ادخال المعلومات الشخصية.</small>
           </div> 
           <div class="content-body">
-            <div class="row"> 
-
-
+            <div class="row">  
 
               <div class="col-md-12"> 
                 <div class="row">  
@@ -212,7 +219,7 @@
                       <div class="col-md-3 col-12">
                         <div class="form-group">
                           <label for="child_brith">تاريخ الميلاد</label>
-                          <input type="text" class="form-control flatpickr-basic" id="child_brith" name="child_brith" aria-describedby="child_brith" placeholder="YYYY-MM-DD" /> 
+                          <input type="text"  name="child_brith" class="form-control pickadate-months-year picker__input picker__input--active" placeholder="YYYY-MM-DD" readonly="" aria-haspopup="true" aria-readonly="false" aria-owns="pd-months-year_root">
                         </div>
                       </div>
      
@@ -352,10 +359,86 @@
 
 
 
+        <div id="qualification-info-vertical" class="content">
+          <div class="content-header">
+            <h5 class="mb-0">بيانات المؤهل الدراسي </h5>
+            <small class="text-muted">   مثل : المؤهل وتاريخ التخرج والتقدير.</small>
+          </div>
+ 
+          <div class="content-body">
+            <div class="row"> 
+              <div class="col-12">  
+                <div class="divider divider-left divider-secondary">
+                  <div class="divider-text text-secondary"> المؤهل الدراسي  </div>
+                </div> 
+                <div class="row">  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="qualification_name"> الاسم المؤهل    </label> 
+                      <input type="text" class="form-control" name="birth_address" id="birth_address" placeholder="بكالوريوس تجارة">  
+                    </div>
+                  </div>    
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="qualification_date"> التاريخ  </label> 
+                      <input type="text" id="date_qualification" class="form-control" name="date_qualification" placeholder="2015">  
+                    </div>
+                  </div>  
+                  <div class="col-md-3"> 
+                    <div class="form-group">
+                      <label for="qualification_round">  الدور </label> 
+                      <select class="form-control" name="qualification_round"  id="qualification_round" required> 
+                        <option value="">.........  </option>
+                        <option  value="first">الاول</option> 
+                        <option  value="second">الثاني</option>    
+                      </select>
+                    </div>
+                  </div>       
+                </div> 
+              </div>  
+  
+              <div class="col-md-12">  
+                <div class="row">  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="qualification_source"> جهة الاصدار    </label> 
+                      <input type="text" class="form-control" name="qualification_source" id="qualification_source" placeholder="جامعة الاسكندرية - كلية التجارة">  
+                    </div>
+                  </div>    
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="qualification_degree"> درجة المؤهل  </label> 
+                      <input type="text" id="qualification_degree" class="form-control" name="qualification_degree" placeholder="امتياز">  
+                    </div>
+                  </div>  
+                  <div class="col-md-3"> 
+                    <div class="form-group">
+                      <label for="qualification_major"> التخصص   </label> 
+                      <input type="text" id="qualification_major" class="form-control" name="qualification_major" placeholder="اقتصاد ">  
+                    </div>
+                  </div>       
+                </div> 
+              </div> 
+            </div>
+          </div>
+          <div class="d-flex justify-content-between next_prev">
+            <button class="btn btn-primary btn-prev">
+              <i data-feather="arrow-right" class="align-middle mr-sm-25 mr-0"></i>
+              <span class="align-middle d-sm-inline-block d-none">السابق</span>
+            </button>
+            <button class="btn btn-primary btn-next">
+              <span class="align-middle d-sm-inline-block d-none">التالي</span>
+              <i data-feather="arrow-left" class="align-middle ml-sm-25 ml-0"></i>
+            </button>
+          </div>
+        </div>
+
+
+
         <div id="job-info-vertical" class="content">
           <div class="content-header">
             <h5 class="mb-0">البيانات الوظيفية  </h5>
-            <small class="text-muted">   مثل : الاسم والرقم القومي.</small>
+            <small class="text-muted">   مثل : الوظيفة الحالية والدرجة المالية.</small>
           </div>
  
           <div class="content-body">
@@ -363,7 +446,7 @@
     
               <div class="col-12">
                 <div class="divider divider-left divider-secondary">
-                  <div class="divider-text text-secondary"> الاسم بالكامل</div>
+                  <div class="divider-text text-secondary"> الوظيفة الحالية  </div>
                 </div>   
 
                 <div class="row">    
@@ -401,22 +484,78 @@
   
               <div class="col-md-12">  
                 <div class="row">  
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="national_idd"> الرقم القومي</label> 
-                      <input type="number" class="form-control" name="national_idd" id="national_idd" placeholder="27012013456789" required  />  
+                      <label for="national_idd">  الدرجة الوظيفية</label> 
+                      <select class="form-control" name="health_status"  id="health_status" required> 
+                        <option value="">.........  </option>
+                        <option  value="اولي">اولي</option>   
+                        <option  value="ثانية">ثانية</option> 
+                        <option  value="ثالثة">ثالثة</option> 
+                        <option  value="رابعة">رابعة</option> 
+                        <option  value="خامسة">خامسة</option> 
+                        <option  value="سادسة">سادسة</option> 
+                        <option  value="كبير">كبير</option>  
+                      </select>
                     </div>
                   </div>   
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="gender"> النوع</label> 
-                      <input type="text" class="form-control" name="gender" id="gender" placeholder=" ذكر / أنثي" required disabled>  
+                      <label for="gender"> الكادر</label> 
+                      <select class="form-control" name="health_status"  id="health_status" required> 
+                        <option value="">.........  </option>
+                        <option  value="عام">عام</option>   
+                        <option  value="خاص">خاص</option> 
+                      </select>
                     </div>
                   </div>    
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="birth_dated"> تاريخ الميلاد  </label> 
-                      <input  type="text" id="birth_dated" class="form-control flatpickr-basic" name="birth_dated" placeholder="YYYY-MM-DD" required disabled>  
+                      <label for="join_date">تاريخ التوظيف </label> 
+                      <input  type="text" id="join_date" class="form-control flatpickr-basic" name="join_date" placeholder="YYYY-MM-DD" required>  
+                    </div>
+                  </div>    
+                </div> 
+              </div> 
+  
+              <div class="col-md-12">  
+                <div class="row">  
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="national_idd">   اسلوب شغل الوظيفة</label> 
+                      <select class="form-control" name="health_status"  id="health_status" required> 
+                        <option value="">.........  </option>
+                        <option  value="اولي">اولي</option>   
+                        <option  value="ثانية">ثانية</option> 
+                        <option  value="ثالثة">ثالثة</option> 
+                        <option  value="رابعة">رابعة</option> 
+                        <option  value="خامسة">خامسة</option> 
+                        <option  value="سادسة">سادسة</option> 
+                        <option  value="كبير">كبير</option>  
+                      </select>
+                    </div>
+                  </div>   
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="job_status"> الحالة الوظيفية</label> 
+                      <select class="form-control" name="job_status"  id="job_status" required> 
+                        <option value="">.........  </option>
+                        <option  value="قائم بالعمل">قائم بالعمل</option>   
+                        <option  value="غير قائم بالعمل">غير قائم بالعمل</option> 
+                      </select>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="join_date">نوع التعيين  </label> 
+                      <select class="form-control" name="health_status"  id="health_status" required> 
+                        <option value="">.........  </option>
+                        <option  value="دائم">دائم</option>   
+                        <option  value="صندوق">صندوق</option> 
+                        <option  value="موازنة">موازنة</option>   
+                        <option  value="فصل مستقل">فصل مستقل</option> 
+                        <option  value="منتدب">منتدب</option> 
+                      </select>  
                     </div>
                   </div>    
                 </div> 

@@ -32,12 +32,14 @@ class EmployeeController extends Controller
  
     public function show(Employee $employee)
     {
-        //
+        $pageConfigs = ['pageHeader' => false];
+        return view('/app/employees/app-employee-view', ['pageConfigs' => $pageConfigs, 'employee' => $employee]);
     }
  
     public function edit(Employee $employee)
-    {
-        //
+    { 
+        $pageConfigs = ['pageHeader' => false];
+        return view('/app/employees/app-employee-edit', ['pageConfigs' => $pageConfigs, 'employee' => $employee]);
     }
  
     public function update(Request $request, Employee $employee)

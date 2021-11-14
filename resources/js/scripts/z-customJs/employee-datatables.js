@@ -136,15 +136,15 @@
               feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
               '</a>' +
               '<div class="dropdown-menu dropdown-menu-right">' +
-              '<a href="/user/edit/' + id +'" class="dropdown-item">' +
+              '<a href="/employee/' + id +'/edit" class="dropdown-item">' +
               feather.icons['edit'].toSvg({ class: 'font-small-4 mr-50' }) +
               'تعديل </a>' + 
-              '<a href="javascript:;" class="dropdown-item confirm confirm_row_' + id +'" onclick="confirmrow(' + id +')" data-id="' + id +'"  data-route="user" data-a_name="'+ name +'">' +
+              '<a href="javascript:;" class="dropdown-item confirm confirm_row_' + id +'" onclick="confirmrow(' + id +')" data-id="' + id +'"  data-route="employee" data-a_name="'+ name +'">' +
               feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) +
               'حذف </a>' +
               '</div>' + 
               '</div>' + 
-              '<a href="/user/view/' + id +'" class="item-edit edit-record" data-id="' + id +'">' +
+              '<a href="/employee/view/' + id +'" class="item-edit edit-record" data-id="' + id +'">' +
               feather.icons['eye'].toSvg({ class: 'font-small-4' }) +
               '</a>'   
             );
@@ -275,7 +275,7 @@
             var select = $(
               '<select id="FilterTransaction" class="form-control text-capitalize mb-md-0 mb-2xx"><option value="">  الحالة </option></select>'
             )
-              .appendTo('.user_role')
+              .appendTo('.employee_role')
               .on('change', function () {
                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
                 column.search(val ? '^' + val + '$' : '', true, false).draw();
@@ -295,9 +295,9 @@
             .every(function () {
               var column = this;
               var select = $(
-                '<select id="UserPlan" class="form-control text-capitalize mb-md-0 mb-2"><option value="">   رقم التليفون </option></select>'
+                '<select id="employeePlan" class="form-control text-capitalize mb-md-0 mb-2"><option value="">   رقم التليفون </option></select>'
               )
-                .appendTo('.user_plan')
+                .appendTo('.employee_plan')
                 .on('change', function () {
                   var val = $.fn.dataTable.util.escapeRegex($(this).val());
                   column.search(val ? '^' + val + '$' : '', true, false).draw();
@@ -319,7 +319,7 @@
               var select = $(
                 '<select id="FilterTransaction" class="form-control text-capitalize mb-md-0 mb-2xx"><option value="">   الوظيفة </option></select>'
               )
-                .appendTo('.user_status')
+                .appendTo('.employee_status')
                 .on('change', function () {
                   var val = $.fn.dataTable.util.escapeRegex($(this).val());
                   column.search(val ? '^' + val + '$' : '', true, false).draw();

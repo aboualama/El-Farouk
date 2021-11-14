@@ -35,9 +35,9 @@
   <div class="card">
     <h5 class="card-header">تصفية النتائج</h5>
     <div class="d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2"> 
-      <div class="col-md-4 user_role"></div>
-      <div class="col-md-4 user_plan"></div>
-      <div class="col-md-4 user_status"></div>
+      <div class="col-md-4 employee_role"></div>
+      <div class="col-md-4 employee_plan"></div>
+      <div class="col-md-4 employee_status"></div>
     </div>
   </div>
   <!-- users filter end -->
@@ -99,7 +99,6 @@
 @section('vendor-script')
   <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>  
   <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>   
-  <script src="{{ asset(mix('js/scripts/confirm-delete.js')) }}"></script> 
   <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.date.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.time.js')) }}"></script>
@@ -121,17 +120,16 @@
   <script src="{{ asset(mix('vendors/js/tables/datatable/buttons.print.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/tables/datatable/dataTables.rowGroup.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/forms/repeater/jquery.repeater.min.js')) }}"></script>
-  <script src="{{ asset(mix('js/scripts/confirm-delete.js')) }}"></script>
 @endsection  
 
 
 @section('page-script') 
   <script src="{{ asset(mix('js/scripts/extensions/ext-component-sweet-alerts.js')) }}"></script>
   <script src="{{ asset(mix('js/scripts/forms/pickers/form-pickers.js')) }}"></script> 
-  <script src="{{ asset(mix('js/scripts/forms/form-wizard.js')) }}"></script>
-  
+  <script src="{{ asset(mix('js/scripts/forms/form-wizard.js')) }}"></script> 
   <script src="{{ asset(mix('js/scripts/forms/form-repeater.js')) }}"></script>
   <script src="{{ asset(mix('js/scripts/z-customJs/employee-datatables.js')) }}"></script>   
+  <script src="{{ asset(mix('js/scripts/confirm-delete.js')) }}"></script> 
  
  
 @endsection 

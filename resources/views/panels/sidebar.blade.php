@@ -104,7 +104,7 @@ $configData = Helper::applClasses();
 
       <li class="nav-item {{ Route::currentRouteName() === ''  ? 'active' : '' }} {{ $custom_classes }}">
         <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
-          <i data-feather="user"></i>
+          <i data-feather="users"></i>
           <span class="menu-title text-truncate">الموظفين</span> 
         </a>  
         <ul class="menu-content"> 
@@ -179,7 +179,7 @@ $configData = Helper::applClasses();
     $show = "1"; 
     @endphp 
     
-     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="display: {{$show === "1" ? 'none' : '' }}" > 
+     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="display: {{$show === "3" ? 'none' : '' }}" > 
           
            @if(isset($menuData[0]))
           @foreach($menuData[0]->menu as $menu)
