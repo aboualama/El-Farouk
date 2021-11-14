@@ -10,6 +10,30 @@
 ```bash 
  cd El-Farouk 
 ```
+ 
+## - Autoloader Optimization 
+```bash
+ composer update 
+```
+```bash 
+ npm install && npm run dev
+```
+ 
+## - Create .ENV files settings 
+```bash 
+ cp .env.example .env 
+```
+ 
+## - Create key APP_KEY in ENV file
+```bash 
+ php artisan key:generate
+```
+
+## - Setup Database Configurations or import it
+```bash 
+ php artisan key:generate
+```
+######  
 ######
 ######
 ## - Autoloader Optimization
@@ -17,12 +41,8 @@
 ###### $ php artisan config:cache - $ php artisan route:cache
 ######
 ######
-## - Create .ENV files settings
-###### $ cp .env.example .env
 ######
 ######
-## - Create key APP_KEY in ENV file
-###### $ php artisan key:gen
 
 
 ## License
