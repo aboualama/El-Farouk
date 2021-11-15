@@ -182,7 +182,7 @@
                       <select class="form-control" name="health_status"  id="health_status" required> 
                         <option value="">.........  </option>
                         <option  value="سليم">سليم</option>   
-                        <option  value="ضمن نسبة 5%">ضمن نسبة 5%</option> 
+                        <option  value="ضمن نسبة 5%"> ضمن نسبة 5%</option> 
                       </select>
                     </div>
                   </div>     
@@ -375,7 +375,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="qualification_name"> الاسم المؤهل    </label> 
-                      <input type="text" class="form-control" name="birth_address" id="birth_address" placeholder="بكالوريوس تجارة">  
+                      <input type="text" class="form-control" name="qualification_name" id="qualification_name" placeholder="بكالوريوس تجارة">  
                     </div>
                   </div>    
                   <div class="col-md-3">
@@ -486,8 +486,8 @@
                 <div class="row">  
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="national_idd">  الدرجة الوظيفية</label> 
-                      <select class="form-control" name="health_status"  id="health_status" required> 
+                      <label for="nationzdd">  الدرجة الوظيفية</label> 
+                      <select class="form-control" name="healthzzatus"  id="healzz_status" required> 
                         <option value="">.........  </option>
                         <option  value="اولي">اولي</option>   
                         <option  value="ثانية">ثانية</option> 
@@ -502,7 +502,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="gender"> الكادر</label> 
-                      <select class="form-control" name="health_status"  id="health_status" required> 
+                      <select class="form-control" name="health_stxatus"  id="health_staxtus" required> 
                         <option value="">.........  </option>
                         <option  value="عام">عام</option>   
                         <option  value="خاص">خاص</option> 
@@ -523,7 +523,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="national_idd">   اسلوب شغل الوظيفة</label> 
-                      <select class="form-control" name="health_status"  id="health_status" required> 
+                      <select class="form-control" name="healxxth_status"  id="health_sxxtatus" required> 
                         <option value="">.........  </option>
                         <option  value="اولي">اولي</option>   
                         <option  value="ثانية">ثانية</option> 
@@ -548,7 +548,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="join_date">نوع التعيين  </label> 
-                      <select class="form-control" name="health_status"  id="health_status" required> 
+                      <select class="form-control" name="health_xxstatus"  id="healtxxh_status" required> 
                         <option value="">.........  </option>
                         <option  value="دائم">دائم</option>   
                         <option  value="صندوق">صندوق</option> 

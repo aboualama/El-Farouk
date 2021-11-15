@@ -23,11 +23,25 @@ class EmployeeController extends Controller
  
     public function store(Request $request)
     {
-        dd($request->all());
-        $record = new Employee;
-
-        $data = $request->except(['social_status', 'health_status', 'military_treatment', 'health_status', 'health_status', 'birth_address']);
-        $record->create($data);
+        // dd($request->all()); 
+  
+        $record = Employee::create([
+            'first_name'         => $request->get('first_name'),
+            'middle_name'        => $request->get('middle_name'),
+            'last_name'          => $request->get('last_name'),
+            'family_name'        => $request->get('family_name'),
+            'national_id'        => $request->get('national_id'),
+            'birth_address'      => $request->get('birth_address'),
+            'birth_city'         => $request->get('birth_city'),
+            'birth_date'         => $request->get('birth_date'),
+            'join_date'          => $request->get('join_date'),
+            'gender'             => $request->get('gender'),
+            'health_status'      => $request->get('health_status'),
+            'social_status'      => $request->get('social_status'),
+            'military_treatment' => $request->get('military_treatment'),
+            'military_summons'   => $request->get('military_summons'),
+            ]);  
+      
     }
  
     public function show(Employee $employee)

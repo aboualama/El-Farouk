@@ -23,7 +23,7 @@ class CreateEmployeesTable extends Migration {
 			$table->enum('gender', ['ذكر', 'انثي']);
 			$table->enum('health_status', ['سليم', 'ضمن نسبة 5%']);
 			$table->enum('social_status', ['اعزب', 'متزوج', 'مطلق', 'ارمل', 'متزوج ويعول', 'مطلق ويعول', 'ارمل ويعول']);
-			$table->enum('military_treatment', ['اعفاء نهائي', 'اعفاء مؤقت', 'مؤجل', 'انهي الخدمة']);
+			$table->enum('military_treatment', ['معاف نهائي', 'معاف مؤقت', 'مؤجل تجنيده', 'انهي الخدمة']);
 			$table->string('military_summons');
 		});
 	}

@@ -24,9 +24,9 @@
         { data: 'id' },
         { data: 'first_name', title: 'name' }, // used for sorting so will hide this column
         { data: 'first_name' },
-        { data: 'first_name' }, 
-        { data: 'first_name' },
-        { data: 'first_name' },
+        { data: 'birth_city' },
+        { data: 'gender' }, 
+        { data: 'social_status' },
         { data: '' }
       ],
       columnDefs: [
@@ -103,16 +103,36 @@
         {
           responsivePriority: 1,
           targets: 4
-        },
-        {
+        }, 
+        {    
+          // Label    
+          targets: 5,
+          render: function (data, type, full, meta) {
+            var $status_number = full['gender'];
+            var $status = {
+              "ذكر"       : { title: 'ذكر', class: 'badge-light-primary' },
+              "انثي"      : { title: 'انثي', class: ' badge-light-success' } 
+              };
+            if (typeof $status[$status_number] === 'undefined') {
+              return data;
+            }
+            return (
+              '<span class="badge badge-pill ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+            );
+          }
+        }, 
+        {    
           // Label
           targets: 6,
           render: function (data, type, full, meta) {
-            var $status_number = full['first_name'];
+            var $status_number = full['social_status'];
             var $status = {
-                "مفعل"    : { title: 'مفعل', class: 'badge-light-primary' },
-                "غير مفعل": { title: 'غير مفعل', class: ' badge-light-success' },
-                معلق      : { title: 'معلق', class: ' badge-light-danger' }
+              "اعزب"       : { title: 'اعزب', class: 'badge-light-primary' },
+              "متزوج"      : { title: 'متزوج', class: ' badge-light-success' },
+              مطلق         : { title: 'مطلق', class: ' badge-light-danger' },
+              "متزوج ويعول": { title: 'متزوج ويعول', class: 'badge-light-secondary' },
+              "مطلق ويعول" : { title: 'مطلق ويعول', class: ' badge-light-info' },
+              "ارمل ويعول" : { title: 'ارمل ويعول', class: ' badge-light-warning' }
               };
             if (typeof $status[$status_number] === 'undefined') {
               return data;
@@ -273,7 +293,7 @@
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="FilterTransaction" class="form-control text-capitalize mb-md-0 mb-2xx"><option value="">  الحالة </option></select>'
+              '<select id="FilterTransaction" class="form-control text-capitalize mb-md-0 mb-2xx"><option value=""> الحالة الاجتماعية </option></select>'
             )
               .appendTo('.employee_role')
               .on('change', function () {
@@ -295,7 +315,7 @@
             .every(function () {
               var column = this;
               var select = $(
-                '<select id="employeePlan" class="form-control text-capitalize mb-md-0 mb-2"><option value="">   رقم التليفون </option></select>'
+                '<select id="employeePlan" class="form-control text-capitalize mb-md-0 mb-2"><option value="">   محل الميلاد  </option></select>'
               )
                 .appendTo('.employee_plan')
                 .on('change', function () {
@@ -317,7 +337,7 @@
             .every(function () {
               var column = this;
               var select = $(
-                '<select id="FilterTransaction" class="form-control text-capitalize mb-md-0 mb-2xx"><option value="">   الوظيفة </option></select>'
+                '<select id="FilterTransaction" class="form-control text-capitalize mb-md-0 mb-2xx"><option value="">   النوع </option></select>'
               )
                 .appendTo('.employee_status')
                 .on('change', function () {
