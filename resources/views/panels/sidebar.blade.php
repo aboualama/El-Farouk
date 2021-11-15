@@ -176,7 +176,7 @@ $configData = Helper::applClasses();
     {{-- to show all menu --}}
 
      @php
-    $show = "1"; 
+    $show = "3"; 
     @endphp 
     
      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="display: {{$show === "3" ? 'none' : '' }}" > 

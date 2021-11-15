@@ -437,6 +437,8 @@
           $('#children_repeater').fadeIn();  
         }else{  
           $('#children_repeater').fadeOut(); 
+          $('#children_repeater input').val(''); 
+          $('#children_repeater select').val(''); 
         }
 
 });

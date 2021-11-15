@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Qualification extends Model 
+{
+
+    protected $table = 'qualifications';
+    public $timestamps = true;
+
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['qualification_name'];
+
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class);
+    }
+
+}

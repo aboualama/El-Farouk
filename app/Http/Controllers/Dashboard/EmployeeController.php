@@ -23,11 +23,11 @@ class EmployeeController extends Controller
  
     public function store(Request $request)
     {
+        dd($request->all());
         $record = new Employee;
 
-        $data = $request->except(['social_status', 'health_status', 'military_treatment', 'health_status', 'health_status']);
+        $data = $request->except(['social_status', 'health_status', 'military_treatment', 'health_status', 'health_status', 'birth_address']);
         $record->create($data);
-       dd($request->all());
     }
  
     public function show(Employee $employee)
@@ -48,8 +48,8 @@ class EmployeeController extends Controller
     }
  
     public function destroy(Employee $employee)
-    {
-        //
+    { 
+        $employee->delete();
     }
 
     public function getemployees()
