@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Employee;
 use Illuminate\Http\Request; 
 use App\Http\Controllers\Controller;
+use App\Traits\EmployeeOtherDataTrait;
 
 class EmployeeController extends Controller
 {
- 
+    use EmployeeOtherDataTrait;
+
     public function index()
     { 
         $records = Employee::get();
@@ -41,8 +43,12 @@ class EmployeeController extends Controller
             'military_treatment' => $request->get('military_treatment'),
             'military_summons'   => $request->get('military_summons'),
             ]);  
-      
+            
+            $id = $record->id;
+
+            $this->addPhoneNumber($request, $id);
     }
+    
  
     public function show(Employee $employee)
     {

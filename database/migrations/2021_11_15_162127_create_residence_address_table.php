@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateResidenceAddressTable extends Migration {
 
@@ -12,7 +13,7 @@ class CreateResidenceAddressTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->string('address'); 
-			$table->foreignId('employee_id')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}
 

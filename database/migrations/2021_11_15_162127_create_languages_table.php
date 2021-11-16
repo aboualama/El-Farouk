@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLanguagesTable extends Migration {
 
@@ -12,7 +13,7 @@ class CreateLanguagesTable extends Migration {
 			$table->timestamps();
 			$table->string('name');
 			$table->enum('level', array('Beginner', 'Intermediate', 'Proficient', 'Fluent', 'Native')); 
-			$table->foreignId('employee_id')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}
 

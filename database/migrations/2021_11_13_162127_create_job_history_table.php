@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateJobHistoryTable extends Migration {
 
@@ -15,11 +16,11 @@ class CreateJobHistoryTable extends Migration {
 			$table->datetime('degree_date');
 			$table->enum('cadre', array('public', 'private'));
 			$table->enum('job_status', array('working', 'notworking')); 
-			$table->foreignId('employee_id')->onUpdate('cascade')->onDelete('cascade');
-			$table->foreignId('job_function_id')->onUpdate('cascade')->onDelete('cascade');
-			$table->foreignId('financial_degree_id')->onUpdate('cascade')->onDelete('cascade');
-			$table->foreignId('nomination_type_id')->onUpdate('cascade')->onDelete('cascade');
-			$table->foreignId('job_style_id')->onUpdate('cascade')->onDelete('cascade'); 
+			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('job_function_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('financial_degree_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('nomination_type_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('job_style_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 		});
 	}
 

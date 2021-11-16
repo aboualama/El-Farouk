@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateChildrensTable extends Migration {
 
@@ -14,7 +15,7 @@ class CreateChildrensTable extends Migration {
 			$table->string('name');
 			$table->enum('gender', array('male', 'female'));
 			$table->datetime('birth_date'); 
-			$table->foreignId('employee_id')->onUpdate('cascade')->onDelete('cascade'); 
+			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEmployeeQualificationTable extends Migration {
 
@@ -15,8 +16,8 @@ class CreateEmployeeQualificationTable extends Migration {
 			$table->string('qualification_degree');
 			$table->string('qualification_major');
 			$table->string('qualification_source');
-			$table->foreignId('employee_id')->onUpdate('cascade')->onDelete('cascade'); 
-			$table->foreignId('qualification_id')->onUpdate('cascade')->onDelete('cascade'); 
+			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('qualification_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}
 

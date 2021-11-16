@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateJobFunctionsTable extends Migration {
 
@@ -11,7 +12,7 @@ class CreateJobFunctionsTable extends Migration {
 			$table->id();
 			$table->timestamps(); 
 			$table->string('name');
-			$table->foreignId('sub_group_id')->onUpdate('cascade')->onDelete('cascade'); 
+			$table->foreignId('sub_group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}
 
