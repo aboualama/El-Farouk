@@ -74,7 +74,7 @@ class EmployeeController extends Controller
 
     public function getemployees()
   {
-    $data['data'] = Employee::all(); 
+    $data['data'] = Employee::get()->load('phones'); 
     return $data ;
   }
 

@@ -25,7 +25,7 @@
         { data: 'first_name', title: 'name' }, // used for sorting so will hide this column
         { data: 'first_name' },
         { data: 'birth_city' },
-        { data: 'gender' }, 
+        { data: 'gender' },  
         { data: 'social_status' },
         { data: '' }
       ],
