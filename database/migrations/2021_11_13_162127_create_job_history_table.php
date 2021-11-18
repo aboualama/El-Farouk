@@ -13,13 +13,13 @@ class CreateJobHistoryTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->datetime('date'); 
-			$table->datetime('degree_date');
-			$table->enum('cadre', array('public', 'private'));
-			$table->enum('job_status', array('working', 'notworking')); 
+			$table->datetime('degree_date');  
 			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 			$table->foreignId('job_function_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('cader_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 			$table->foreignId('financial_degree_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 			$table->foreignId('nomination_type_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('job_status_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 			$table->foreignId('job_style_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 		});
 	}

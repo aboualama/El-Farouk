@@ -11,7 +11,9 @@ class CreateSubGroupsTable extends Migration {
 		Schema::create('sub_groups', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps();
-			$table->string('name'); 
+			$table->softDeletes();
+			$table->string('name');
+			$table->integer('code');
 			$table->foreignId('functional_group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}

@@ -14,7 +14,7 @@ class FunctionalGroup extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name','code'];
 
     public function sub_groups()
     {

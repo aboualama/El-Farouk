@@ -13,8 +13,8 @@ class Qualification extends Model
 
     use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
-    protected $fillable = ['qualification_name'];
+    protected $dates = ['deleted_at']; 
+    protected $fillable = ['name','code'];
 
     public function employees()
     {

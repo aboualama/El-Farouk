@@ -11,6 +11,7 @@ class CreateEmployeeQualificationTable extends Migration {
 		Schema::create('employee_qualification', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps(); 
+			$table->softDeletes(); 
 			$table->datetime('qualification_date');
 			$table->enum('qualification_round', array('first', 'second'));
 			$table->string('qualification_degree');

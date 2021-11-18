@@ -32,12 +32,14 @@ class EmployeeFactory extends Factory
             'birth_address' => $this->faker->address,
             'birth_city' => $this->faker->city, 
             'birth_date' => $this->faker->dateTime, 
-            'join_date' => $this->faker->dateTime, 
-            'gender' => $this->faker->randomElement(['ذكر', 'انثي']), 
-            'health_status' => $this->faker->randomElement(['سليم', 'ضمن نسبة 5%']),  
-            'social_status' => $this->faker->randomElement(['اعزب', 'متزوج', 'مطلق', 'ارمل', 'متزوج ويعول', 'مطلق ويعول', 'ارمل ويعول']), 
-            'military_treatment' => $this->faker->randomElement(['معاف نهائي', 'معاف مؤقت', 'مؤجل تجنيده', 'انهي الخدمة']), 
+            'join_date' => $this->faker->dateTime,   
+            'gender_id' => $this->faker->randomElement([1 , 2]), 
+            'health_status_id' => $this->faker->randomElement([1 , 2]), 
+            'social_status_id' => $this->faker->randomElement([1 , 5]), 
+            'military_treatment_id' => $this->faker->randomElement([1 , 4]),  
             'military_summons' => $this->faker->sentence, 
         ];
     }
 }     
+
+ 

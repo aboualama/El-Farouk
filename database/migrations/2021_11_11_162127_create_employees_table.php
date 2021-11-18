@@ -20,12 +20,12 @@ class CreateEmployeesTable extends Migration {
 			$table->string('birth_address');
 			$table->string('birth_city');
 			$table->datetime('birth_date');
-			$table->datetime('join_date');
-			$table->enum('gender', ['ذكر', 'انثي']);
-			$table->enum('health_status', ['سليم', 'ضمن نسبة 5%']);
-			$table->enum('social_status', ['اعزب', 'متزوج', 'مطلق', 'ارمل', 'متزوج ويعول', 'مطلق ويعول', 'ارمل ويعول']);
-			$table->enum('military_treatment', ['معاف نهائي', 'معاف مؤقت', 'مؤجل تجنيده', 'انهي الخدمة']);
+			$table->datetime('join_date');   
 			$table->string('military_summons');
+			$table->foreignId('gender_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+			$table->foreignId('health_status_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+			$table->foreignId('social_status_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+			$table->foreignId('military_treatment_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
 		});
 	}
 

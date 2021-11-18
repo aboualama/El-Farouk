@@ -25,7 +25,7 @@
         { data: 'first_name', title: 'name' }, // used for sorting so will hide this column
         { data: 'first_name' },
         { data: 'birth_city' },
-        { data: 'gender' },  
+        { data: 'gender_id' },  
         { data: 'social_status' },
         { data: '' }
       ],
@@ -108,10 +108,10 @@
           // Label    
           targets: 5,
           render: function (data, type, full, meta) {
-            var $status_number = full['gender'];
+            var $status_number = full['gender_id'];
             var $status = {
-              "ذكر"       : { title: 'ذكر', class: 'badge-light-primary' },
-              "انثي"      : { title: 'انثي', class: ' badge-light-success' } 
+              1       : { title: 'ذكر', class: 'badge-light-primary' },
+              2      : { title: 'انثي', class: ' badge-light-success' } 
               };
             if (typeof $status[$status_number] === 'undefined') {
               return data;

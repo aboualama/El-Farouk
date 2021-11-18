@@ -21,13 +21,7 @@ class SettingController extends Controller
         return view('/app/settings/app_settings', ['pageConfigs' => $pageConfigs, 'record' => $record]);
     } 
   
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\setting  $setting
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, Setting $setting)
     { 
         $record = Setting::first(); 
@@ -47,19 +41,6 @@ class SettingController extends Controller
         $record->save();
     }
 
-
-    public function set_default_year($id)
-    { 
-        Year::where('default', 1)->update(['default' => 0]);
-        $record = Year::find($id)->update(['default' => 1]); 
-    }
-
-
-    public function change_year($id)
-    { 
-        $record = Year::find($id);  
-        return view('app.years.change_years', ['record' => $record]); 
-    }
  
 }
  
