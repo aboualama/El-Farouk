@@ -11,6 +11,7 @@ class CreateJobStylesTable extends Migration {
 		Schema::create('job_styles', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps();
+			$table->softDeletes();
 			$table->string('name');
 			$table->string('code');
 		});

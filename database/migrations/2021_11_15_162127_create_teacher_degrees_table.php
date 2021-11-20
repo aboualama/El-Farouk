@@ -11,7 +11,9 @@ class CreateTeacherDegreesTable extends Migration {
 		Schema::create('teacher_degrees', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps();
-			$table->string('title');
+			$table->softDeletes();
+			$table->string('name');
+			$table->integer('code');
 		});
 	}
 

@@ -52,17 +52,6 @@ class SubGroupTableSeeder extends Seeder
         } 
 
 
-        $arr3 = ['الوظائف المكتبية']; 
-        for($i = 0 ; $i < 1 ; $i++)
-        { 
-            SubGroup::create([
-                'name' => $arr3[$i], 
-                'code' => $i + 1, 
-                'functional_group_id' => 3, 
-            ]); 
-        } 
-
-
         $arr4 = ['لوظائف الورش والالات', 'لوظائف الزراعه والتغذية', 'لوظائف الحركة والنقل', 'لوظائف الفنون والعمارة']; 
         for($i = 0 ; $i < 4 ; $i++)
         { 

@@ -16,4 +16,4 @@ class JobStyle extends Model
     protected $dates = ['deleted_at']; 
     protected $fillable = ['name','code'];
 
-}
+} 

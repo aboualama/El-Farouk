@@ -21,4 +21,9 @@ class SubGroup extends Model
         return $this->hasMany(JobFunction::class);
     }
 
+    public function functional_group()
+    {
+        return $this->belongsTo(FunctionalGroup::class);
+    }
+
 }

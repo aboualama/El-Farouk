@@ -12,7 +12,7 @@ class CreateJobFunctionsTable extends Migration {
 			$table->id();
 			$table->timestamps(); 
 			$table->softDeletes(); 
-			$table->string('name');
+			$table->string('job_function_name');
 			$table->foreignId('sub_group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}

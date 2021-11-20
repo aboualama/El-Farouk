@@ -165,14 +165,10 @@
                     <div class="form-group">
                       <label for="social_status"> الحالة الاجتماعية </label> 
                       <select class="form-control" name="social_status"  id="social_status" required> 
-                        <option value="">.........  </option>
-                        <option  value="اعزب">اعزب</option> 
-                        <option  value="متزوج">متزوج</option> 
-                        <option  value="ارمل">ارمل</option> 
-                        <option  value="مطلق">مطلق</option> 
-                        <option  value="متزوج ويعول">متزوج ويعول</option>   
-                        <option  value="ارمل ويعول">ارمل ويعول</option>  
-                        <option  value="مطلق ويعول">مطلق ويعول</option>  
+                        <option value="">.........  </option> 
+                        @foreach ($socialStatus as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div>
                   </div>  
@@ -180,9 +176,10 @@
                     <div class="form-group">
                       <label for="health_status"> الحالة الصحية </label> 
                       <select class="form-control" name="health_status"  id="health_status" required> 
-                        <option value="">.........  </option>
-                        <option  value="سليم">سليم</option>   
-                        <option  value="ضمن نسبة 5%"> ضمن نسبة 5%</option> 
+                        <option value="">.........  </option> 
+                        @foreach ($healthStatus as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div>
                   </div>     
@@ -252,11 +249,10 @@
                     <div class="form-group">
                       <label for="military_treatment">  المعاملة العسكرية </label> 
                       <select class="form-control" name="military_treatment"  id="military_treatment" required> 
-                        <option value="">.........  </option>
-                        <option  value="معاف مؤقت">معاف مؤقت</option> 
-                        <option  value="معاف نهائي">معاف نهائي</option> 
-                        <option  value="مؤجل تجنيده">مؤجل تجنيده</option> 
-                        <option  value="انهي الخدمة">انهي الخدمة</option> 
+                        <option value="">.........  </option> 
+                        @foreach ($militaryTreatment as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div>
                   </div>    
@@ -374,9 +370,14 @@
                 <div class="row">  
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="qualification_name"> الاسم المؤهل    </label> 
-                      <input type="text" class="form-control" name="qualification_name" id="qualification_name" placeholder="بكالوريوس تجارة">  
-                    </div>
+                      <label for="qualification_id">  المؤهل    </label>  
+                      <select class="form-control" name="qualification_id"  id="qualification_id" required> 
+                        <option value="">.........  </option> 
+                        @foreach ($qualification as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
+                      </select>
+                    </div> 
                   </div>    
                   <div class="col-md-3">
                     <div class="form-group">
@@ -452,20 +453,20 @@
                 <div class="row">    
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="status">المجموعة الوظيفية </label>
-                      <select class="form-control" name="category_id" id="category" > 
+                      <label for="functional_group_id">المجموعة الوظيفية </label>
+                      <select class="form-control" name="functional_group_id" id="functional_group_id" > 
                         <option  value="">.........  </option>
-                        {{-- @foreach ($categories as $category) 
-                          <option value="{{$category->id}}">{{$category->name}}</option> 
-                        @endforeach --}}
+                        @foreach ($functionalGroup as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div> 
                   </div> 
     
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="role"> المجموعة النوعية</label>
-                      <select class="form-control" name="custody_type_id" id="type"> 
+                      <label for="sub_group_id"> المجموعة النوعية</label>
+                      <select class="form-control" name="sub_group_id" id="sub_group_id"> 
                         <option  value=""> اختار المجموعة الوظيفية اولا</option>
                       </select>
                     </div> 
@@ -473,10 +474,8 @@
     
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="role">  المسمى الوظيفى </label>
-                      <select class="form-control" name="custody_type_id" id="type"> 
-                        <option  value=""> اختار المسمى الوظيفى </option>
-                      </select>
+                      <label for="job_function_name">  المسمى الوظيفى </label>
+                      <input type="text" class="form-control" name="job_function_name" id="job_function_name" placeholder="طبيب اسنان" required  />  
                     </div> 
                   </div>  
                 </div> 
@@ -486,26 +485,23 @@
                 <div class="row">  
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="nationzdd">  الدرجة الوظيفية</label> 
-                      <select class="form-control" name="healthzzatus"  id="healzz_status" required> 
+                      <label for="functional_degree_id">  الدرجة الوظيفية</label> 
+                      <select class="form-control" name="functional_degree_id"  id="functional_degree_id" required> 
                         <option value="">.........  </option>
-                        <option  value="اولي">اولي</option>   
-                        <option  value="ثانية">ثانية</option> 
-                        <option  value="ثالثة">ثالثة</option> 
-                        <option  value="رابعة">رابعة</option> 
-                        <option  value="خامسة">خامسة</option> 
-                        <option  value="سادسة">سادسة</option> 
-                        <option  value="كبير">كبير</option>  
+                        @foreach ($financialDegree as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div>
                   </div>   
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="gender"> الكادر</label> 
-                      <select class="form-control" name="health_stxatus"  id="health_staxtus" required> 
+                      <label for="cader_id"> الكادر</label> 
+                      <select class="form-control" name="cader_id"  id="cader_id" required> 
                         <option value="">.........  </option>
-                        <option  value="عام">عام</option>   
-                        <option  value="خاص">خاص</option> 
+                        @foreach ($cader as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div>
                   </div>    
@@ -522,39 +518,34 @@
                 <div class="row">  
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="national_idd">   اسلوب شغل الوظيفة</label> 
-                      <select class="form-control" name="healxxth_status"  id="health_sxxtatus" required> 
+                      <label for="job_style_id">   اسلوب شغل الوظيفة</label> 
+                      <select class="form-control" name="job_style_id"  id="job_style_id" required> 
                         <option value="">.........  </option>
-                        <option  value="اولي">اولي</option>   
-                        <option  value="ثانية">ثانية</option> 
-                        <option  value="ثالثة">ثالثة</option> 
-                        <option  value="رابعة">رابعة</option> 
-                        <option  value="خامسة">خامسة</option> 
-                        <option  value="سادسة">سادسة</option> 
-                        <option  value="كبير">كبير</option>  
+                        @foreach ($jobStyle as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div>
                   </div>   
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="job_status"> الحالة الوظيفية</label> 
-                      <select class="form-control" name="job_status"  id="job_status" required> 
+                      <label for="job_status_id"> الحالة الوظيفية</label> 
+                      <select class="form-control" name="job_status_id"  id="job_status_id" required> 
                         <option value="">.........  </option>
-                        <option  value="قائم بالعمل">قائم بالعمل</option>   
-                        <option  value="غير قائم بالعمل">غير قائم بالعمل</option> 
+                        @foreach ($jobStatus as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>
                     </div>
                   </div>    
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="join_date">نوع التعيين  </label> 
-                      <select class="form-control" name="health_xxstatus"  id="healtxxh_status" required> 
+                      <label for="nomination_type_id">نوع التعيين  </label> 
+                      <select class="form-control" name="nomination_type_id"  id="nomination_type_id" required> 
                         <option value="">.........  </option>
-                        <option  value="دائم">دائم</option>   
-                        <option  value="صندوق">صندوق</option> 
-                        <option  value="موازنة">موازنة</option>   
-                        <option  value="فصل مستقل">فصل مستقل</option> 
-                        <option  value="منتدب">منتدب</option> 
+                        @foreach ($nominationType as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
                       </select>  
                     </div>
                   </div>    

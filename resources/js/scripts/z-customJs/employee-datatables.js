@@ -26,7 +26,7 @@
         { data: 'first_name' },
         { data: 'birth_city' },
         { data: 'gender_id' },  
-        { data: 'social_status' },
+        { data: 'social_status_id' },
         { data: '' }
       ],
       columnDefs: [
@@ -110,8 +110,8 @@
           render: function (data, type, full, meta) {
             var $status_number = full['gender_id'];
             var $status = {
-              1       : { title: 'ذكر', class: 'badge-light-primary' },
-              2      : { title: 'انثي', class: ' badge-light-success' } 
+              1: { title: 'ذكر', class: 'badge-light-primary' },
+              2: { title: 'انثي', class: ' badge-light-success' }
               };
             if (typeof $status[$status_number] === 'undefined') {
               return data;
@@ -125,14 +125,14 @@
           // Label
           targets: 6,
           render: function (data, type, full, meta) {
-            var $status_number = full['social_status'];
+            var $status_number = full['social_status_id'];
             var $status = {
-              "اعزب"       : { title: 'اعزب', class: 'badge-light-primary' },
-              "متزوج"      : { title: 'متزوج', class: ' badge-light-success' },
-              مطلق         : { title: 'مطلق', class: ' badge-light-danger' },
-              "متزوج ويعول": { title: 'متزوج ويعول', class: 'badge-light-secondary' },
-              "مطلق ويعول" : { title: 'مطلق ويعول', class: ' badge-light-info' },
-              "ارمل ويعول" : { title: 'ارمل ويعول', class: ' badge-light-warning' }
+              1: { title: 'اعزب', class: 'badge-light-primary' },
+              2: { title: 'متزوج', class: ' badge-light-success' },
+              3: { title: 'مطلق', class: ' badge-light-danger' },
+              4: { title: 'متزوج ويعول', class: 'badge-light-secondary' },
+              5: { title: 'مطلق ويعول', class: ' badge-light-info' },
+              6: { title: 'ارمل ويعول', class: ' badge-light-warning' }
               };
             if (typeof $status[$status_number] === 'undefined') {
               return data;
@@ -305,8 +305,18 @@
               .data()
               .unique()
               .sort()
-              .each(function (d, j) {
-                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+              .each(function (d, j) { 
+                var $status_number = d;
+                var $status = {
+                  1: { title: 'اعزب', class: 'badge-light-primary' },
+                  2: { title: 'متزوج', class: ' badge-light-success' },
+                  3: { title: 'مطلق', class: ' badge-light-danger' },
+                  4: { title: 'متزوج ويعول', class: 'badge-light-secondary' },
+                  5: { title: 'مطلق ويعول', class: ' badge-light-info' },
+                  6: { title: 'ارمل ويعول', class: ' badge-light-warning' }
+                  };
+                  
+                select.append('<option value="' + $status[$status_number].title + '" class="text-capitalize">' + $status[$status_number].title + '</option>');
               });
           });
           // Adding plan filter once table initialized
@@ -350,7 +360,13 @@
                 .unique()
                 .sort()
                 .each(function (d, j) {
-                  select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+                  var $status_number = d;
+                  var $status = {
+                    1: { title: 'ذكر', class: 'badge-light-primary' },
+                    2: { title: 'انثي', class: ' badge-light-success' }
+                    };
+                    
+                  select.append('<option value="' + $status[$status_number].title + '" class="text-capitalize">' + $status[$status_number].title + '</option>');
                 });
             });
       }
@@ -468,43 +484,25 @@
 
 
 
-  // change category
-  $('#category').on("change", function (e) {
+  // change functional_group 
+  $('#functional_group_id').on("change", function (e) {
     e.stopPropagation();
-    var id = $('#category').val();
+    var id = $('#functional_group_id').val();
     $.ajax({
       type: 'GET',
       data: { id: id },
-      url: '/get-type/',
+      url: '/get_sub_group/',
       success: function (data) {   
-            $('#type').empty();
-            $('#type').append('<option> .........</option>');
+            $('#sub_group_id').empty();
+            $('#sub_group_id').append('<option> .........</option>');
             $('.clear_form').fadeOut();  
-            $.each(data,function(index,type){
-              $('#type').append('<option value="'+type.id+'">  '+ type.name +'</option>');
+            $.each(data,function(index,sub_group){
+              $('#sub_group_id').append('<option value="'+sub_group.id+'">  '+ sub_group.name +'</option>');
             }) 
       }
     });
   });
- 
-// change type
-  $('#type').on("change", function (e) {
-    e.stopPropagation();
-    var category_id = $('#category').val();
-    var type_id = $('#type').val();
-    $.ajax({
-      type: 'GET',
-      data: { 
-        type_id: type_id , 
-        category_id: category_id
-      },
-      url: '/get-type-form/',
-      success: function (data) {  
-            $('#section_forms').html(data);
-      }
-    });
-  });
-    
+  
 
 
 });

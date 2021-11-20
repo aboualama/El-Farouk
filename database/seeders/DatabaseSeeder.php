@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NominationTypeTableSeeder::class);    
         $this->call(CaderSeeder::class);   
         $this->call(JobStatusSeeder::class); 
-        $this->call(JobStyleSeeder::class);    
+        $this->call(JobStyleSeeder::class); 
+        $this->call(TeacherDegreeSeeder::class);    
     }
 }  

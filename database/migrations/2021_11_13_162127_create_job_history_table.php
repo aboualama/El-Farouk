@@ -23,7 +23,7 @@ class CreateJobHistoryTable extends Migration {
 			$table->foreignId('job_style_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 		});
 	}
-
+ 
 	public function down()
 	{
 		Schema::drop('job_history');
