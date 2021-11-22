@@ -14,7 +14,7 @@ class JobHistory extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['date', 'employee_id', 'job_function_id', 'financial_degree_id', 'degree_date', 'job_style_id', 'cadre', 'job_status', 'nomination_type_id'];
+    protected $fillable = ['join_date', 'employee_id', 'sub_group_id', 'job_function_name', 'financial_degree_id', 'degree_date', 'job_style_id', 'cader_id', 'job_status_id', 'nomination_type_id'];
 
     public function job_functions()
     {

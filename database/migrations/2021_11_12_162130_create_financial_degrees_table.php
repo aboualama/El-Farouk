@@ -11,6 +11,7 @@ class CreateFinancialDegreesTable extends Migration {
 		Schema::create('financial_degrees', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps();
+			$table->softDeletes();
 			$table->string('name');
 			$table->string('code');
 		});

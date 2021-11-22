@@ -18,10 +18,23 @@ use App\Http\Controllers\AuthenticationController;
 
 
 
+use App\Http\Controllers\Dashboard\CaderController;
+use App\Http\Controllers\Dashboard\GenderController;
 use App\Http\Controllers\Dashboard\EmployeeController;
+use App\Http\Controllers\Dashboard\JobStyleController;
+use App\Http\Controllers\Dashboard\SubGroupController;
 use  App\Http\Controllers\Dashboard\UserController;    
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\JobStatusController;
 use App\Http\Controllers\Dashboard\SettingController;  
+use App\Http\Controllers\Dashboard\HealthStatusController;
+use App\Http\Controllers\Dashboard\SocialStatusController;
+use App\Http\Controllers\Dashboard\QualificationController;
+use App\Http\Controllers\Dashboard\TeacherDegreeController;
+use App\Http\Controllers\Dashboard\NominationTypeController;
+use App\Http\Controllers\Dashboard\FinancialDegreeController;
+use App\Http\Controllers\Dashboard\FunctionalGroupController;
+use App\Http\Controllers\Dashboard\MilitaryTreatmentController;
  
 
 Auth::routes(['verify' => true , 'register' => false]);
@@ -31,9 +44,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
   // Main Page Route 
   Route::get('/', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics');
-   
-
-
+    
   // Main User Route 
   Route::post('user/store', [UserController::class,'user_store'])->name('user-store');
   Route::get('user/list', [UserController::class,'user_list'])->name('user-list');
@@ -52,23 +63,32 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 
 
-
-
   Route::resource('employee', EmployeeController::class);
-  Route::get('employee/list/data', [EmployeeController::class,'getemployees'])->name('employee-datatables');   
-
-  // Route::get('get-type', [CustodyController::class,'get_type'])->name('get-type'); 
-
+  Route::get('employee/list/data', [EmployeeController::class,'getemployees'])->name('employee-datatables');    
+  Route::get('get_sub_group', [EmployeeController::class,'get_sub_group'])->name('get_sub_group'); 
 
 
 
+  Route::resource('gender', GenderController::class); 
+  Route::resource('cader', CaderController::class); 
+  Route::resource('healthStatus', HealthStatusController::class); 
+  Route::resource('jobStatus', JobStatusController::class);  
+  Route::resource('militaryTreatment', MilitaryTreatmentController::class); 
+  Route::resource('socialStatus', SocialStatusController::class); 
+  Route::resource('functionalGroup', FunctionalGroupController::class); 
+  Route::resource('financialDegree', FinancialDegreeController::class); 
+  Route::resource('jobStyle', JobStyleController::class); 
+  Route::resource('nominationType', NominationTypeController::class); 
+  Route::resource('qualification', QualificationController::class); 
+  Route::resource('teacherDegree', TeacherDegreeController::class); 
+  Route::resource('subGroup', SubGroupController::class); 
+  
+  
 
+  
 
-
-
-
- 
- 
+  
+  
 
 
 

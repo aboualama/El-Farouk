@@ -14,6 +14,6 @@ class JobFunction extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['sub_group_id', 'name'];
+    protected $fillable = ['sub_group_id', 'job_function_name'];
 
 }

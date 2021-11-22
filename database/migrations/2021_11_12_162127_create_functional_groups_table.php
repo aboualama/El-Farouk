@@ -11,7 +11,9 @@ class CreateFunctionalGroupsTable extends Migration {
 		Schema::create('functional_groups', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps();
+			$table->softDeletes();
 			$table->string('name');
+			$table->integer('code');
 		});
 	}
 

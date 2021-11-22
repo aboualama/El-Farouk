@@ -11,7 +11,9 @@ class CreateNominationTypesTable extends Migration {
 		Schema::create('nomination_types', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps();
-			$table->string('title');
+			$table->softDeletes();
+			$table->string('name');
+			$table->integer('code');
 		});
 	}
 

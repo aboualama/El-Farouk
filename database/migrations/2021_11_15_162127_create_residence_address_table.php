@@ -12,7 +12,9 @@ class CreateResidenceAddressTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('address'); 
+			$table->string('residence_address'); 
+			$table->string('residence_center'); 
+			$table->string('residence_city'); 
 			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}

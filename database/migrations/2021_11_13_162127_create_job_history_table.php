@@ -12,18 +12,19 @@ class CreateJobHistoryTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->softDeletes();
-			$table->datetime('date'); 
-			$table->datetime('degree_date');
-			$table->enum('cadre', array('public', 'private'));
-			$table->enum('job_status', array('working', 'notworking')); 
-			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
-			$table->foreignId('job_function_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->datetime('join_date'); 
+			$table->datetime('degree_date');  
+			$table->string('job_function_name');
+			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
+			$table->foreignId('cader_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 			$table->foreignId('financial_degree_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 			$table->foreignId('nomination_type_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('job_status_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 			$table->foreignId('job_style_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
+			$table->foreignId('sub_group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();  
 		});
 	}
-
+ 
 	public function down()
 	{
 		Schema::drop('job_history');

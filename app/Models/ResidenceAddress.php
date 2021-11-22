@@ -14,6 +14,6 @@ class ResidenceAddress extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['address', 'employee_id'];
+    protected $fillable = ['residence_address', 'residence_center', 'residence_city', 'employee_id'];
 
-}
+}  

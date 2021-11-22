@@ -11,7 +11,8 @@ class CreateJobFunctionsTable extends Migration {
 		Schema::create('job_functions', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps(); 
-			$table->string('name');
+			$table->softDeletes(); 
+			$table->string('job_function_name');
 			$table->foreignId('sub_group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
 		});
 	}

@@ -14,11 +14,16 @@ class SubGroup extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name', 'functional_group_id'];
+    protected $fillable = ['name', 'code', 'functional_group_id']; 
 
     public function job_functions()
     {
         return $this->hasMany(JobFunction::class);
+    }
+
+    public function functional_group()
+    {
+        return $this->belongsTo(FunctionalGroup::class);
     }
 
 }
