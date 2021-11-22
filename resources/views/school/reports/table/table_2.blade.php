@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-  
-  <style>  
- 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+
      * {
-      margin: 0px; 
-      padding: 0px; 
+      margin: 0px;
+      padding: 0px;
       box-sizing: border-box;
     }
 
     body, html {
-      height: 100%; 
+      height: 100%;
       direction: rtl
     }
- 
+
 
     .limiter {
       width: 100%;
       margin: 0 auto;
-      text-align: center; 
+      text-align: center;
     }
 
     .container-table100 {
@@ -394,10 +394,10 @@
     }
 
 
-    
-    
+
+
     /*==================================================================
-    [ header  footer ]*/ 
+    [ header  footer ]*/
     .invoice-box {
 				max-width: 800px;
 				margin: auto;
@@ -408,7 +408,7 @@
 				line-height: 24px;
 				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 				color: #555;
-			}    
+			}
 			.invoice-box table {
 				width: 100%;
 				line-height: inherit;
@@ -485,11 +485,11 @@
 				direction: rtl;
 				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 			}
- 
-      .img{ 
+
+      .img{
           /* border: 1px solid #ddd; */
           border-radius: 14px !important;
-          padding: 15px;  
+          padding: 15px;
           width:  180px  !important;
           height:   130px  !important;
         }
@@ -498,40 +498,40 @@
 			}
       table {
 				text-align: center !important;
-			} 
-   
+			}
+
 
   </style>
 </head>
-  <body> 
+  <body>
 
-    <htmlpageheader name="page-header">  
-    
+    <htmlpageheader name="page-header">
+
       <div class="invoice-box">
         <table>
-          <tr class="header-table"> 
+          <tr class="header-table">
             <td style="text-align: right">
               <img class="img" src="https://upload.wikimedia.org/wikipedia/ar/thumb/2/20/MOELogo.svg/1200px-MOELogo.svg.png"  />
-            </td> 
-            <td>   
-            </td> 
-            <td style="text-align: left;"> 
+            </td>
+            <td>
+            </td>
+            <td style="text-align: left;">
               <img class="img" src="https://cdn.mosoah.com/wp-content/uploads/2019/11/05171421/%D8%B5%D9%88%D8%B1-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%B1%D8%A4%D9%8A%D8%A9-%D9%88%D8%B7%D9%86-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A95-746x510.jpg"  />
             </td>
           </tr>
-  
-          <tr style="text-align: cente"> 
+
+          <tr style="text-align: cente">
             <td >
               <p style="font-size: 14px; text-align: cente">  المدرسة: {{$setting->name}}  </p>
-            </td> 
-            <td>  
-              <p style="font-size: 14px; text-align: center"> مديرة المدرسة: {{$setting->manger}}    </p> 
-            </td> 
-            <td> 
+            </td>
+            <td>
+              <p style="font-size: 14px; text-align: center"> مديرة الكلية: {{$setting->manger}}    </p>
+            </td>
+            <td>
               <p style="font-size: 14px;">تاريخ اليوم: {{$fulldate}} </p>
             </td>
-          </tr> 
-        </table> 
+          </tr>
+        </table>
       </div>
 
       <div  >
@@ -542,52 +542,52 @@
     </htmlpageheader>
 
     <htmlpagefooter name="page-footer">
-      
+
     <hr style="width: 50%">
 
       <div  class="invoice-box">
         <table>
-          <tr > 
-            <td  style="font-size: 14px; text-align: right">  مديرة المدرسة: {{$setting->manger}}  </td> 
-            <td  style="font-size: 14px; text-align: center">	  - {PAGENO} - 	</td> 
-            <td  style="font-size: 14px; text-align: left"> cc 	مديرة المدرسة: {{$setting->manger}} 	</td>
+          <tr >
+            <td  style="font-size: 14px; text-align: right">  مديرة الكلية: {{$setting->manger}}  </td>
+            <td  style="font-size: 14px; text-align: center">	  - {PAGENO} - 	</td>
+            <td  style="font-size: 14px; text-align: left"> cc 	مديرة الكلية: {{$setting->manger}} 	</td>
           </tr>
         </table>
       </div>
-    
-    </htmlpagefooter> 
-      
+
+    </htmlpagefooter>
+
 
     <hr style="width: 50%">
 
-    <div  style="margin-top: 60px; display: block;"> 
+    <div  style="margin-top: 60px; display: block;">
       <div class="limiter">
         <div class="container-table100">
           <div class="wrap-table100">
-      
+
             <div class="table100 ver5 m-b-110">
               <table data-vertable="ver5">
                 <thead>
-                  <tr class="row100 head"> 
+                  <tr class="row100 head">
                     <th class="column100 column1" data-column="column1">رقم </th>
-                    <th class="column100 column2" data-column="column2">اسم الدفتر </th> 
-                    <th class="column100 column3" data-column="column3">الوحدة</th> 
-                    <th class="column100 column4" data-column="column4">الكمية</th> 
-                    <th class="column100 column5" data-column="column5">  النقص</th> 
+                    <th class="column100 column2" data-column="column2">اسم الدفتر </th>
+                    <th class="column100 column3" data-column="column3">الوحدة</th>
+                    <th class="column100 column4" data-column="column4">الكمية</th>
+                    <th class="column100 column5" data-column="column5">  النقص</th>
                   </tr>
                 </thead>
-                <tbody>  
+                <tbody>
 
                   @foreach ($custodies as $custody)
-                  <tr  class="row100"> 
+                  <tr  class="row100">
                     <td class="column100 column1" data-column="column1"> {{$custody->id}} </td>
                     <td class="column100 column2" data-column="column2"> {{$custody->notebook_name}} </td>
-                    <td class="column100 column3" data-column="column3"> {{$custody->unit}} </td> 
+                    <td class="column100 column3" data-column="column3"> {{$custody->unit}} </td>
                     <td class="column100 column4" data-column="column4"> {{$custody->quantity}} </td>
                     <td class="column100 column5" data-column="column5"> {{$custody->shortage}} </td>
-                  </tr> 
+                  </tr>
                 @endforeach
-        
+
                 </tbody>
               </table>
             </div>
@@ -596,14 +596,14 @@
 
           </div>
         </div>
-      </div> 
-    </div> 
+      </div>
+    </div>
 
 </body>
 </html>
 
 
 
- 
 
-{{-- 2 الاختبارات --}}    
+
+{{-- 2 الاختبارات --}}
