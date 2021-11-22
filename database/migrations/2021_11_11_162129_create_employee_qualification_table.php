@@ -12,8 +12,8 @@ class CreateEmployeeQualificationTable extends Migration {
 			$table->id();
 			$table->timestamps(); 
 			$table->softDeletes(); 
-			$table->datetime('qualification_date');
-			$table->enum('qualification_round', array('first', 'second'));
+			$table->string('qualification_date');
+			$table->enum('qualification_round', ['أول', 'ثاني']);
 			$table->string('qualification_degree');
 			$table->string('qualification_major');
 			$table->string('qualification_source');

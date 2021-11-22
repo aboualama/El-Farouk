@@ -163,8 +163,8 @@
                 <div class="row">  
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="social_status"> الحالة الاجتماعية </label> 
-                      <select class="form-control" name="social_status"  id="social_status" required> 
+                      <label for="social_status_id"> الحالة الاجتماعية </label> 
+                      <select class="form-control" name="social_status_id"  id="social_status_id" required> 
                         <option value="">.........  </option> 
                         @foreach ($socialStatus as $record) 
                           <option value="{{$record->id}}">{{$record->name}}</option> 
@@ -174,8 +174,8 @@
                   </div>  
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="health_status"> الحالة الصحية </label> 
-                      <select class="form-control" name="health_status"  id="health_status" required> 
+                      <label for="health_status_id"> الحالة الصحية </label> 
+                      <select class="form-control" name="health_status_id"  id="health_status_id" required> 
                         <option value="">.........  </option> 
                         @foreach ($healthStatus as $record) 
                           <option value="{{$record->id}}">{{$record->name}}</option> 
@@ -247,8 +247,8 @@
                 <div class="row">  
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="military_treatment">  المعاملة العسكرية </label> 
-                      <select class="form-control" name="military_treatment"  id="military_treatment" required> 
+                      <label for="military_treatment_id">  المعاملة العسكرية </label> 
+                      <select class="form-control" name="military_treatment_id"  id="military_treatment_id" required> 
                         <option value="">.........  </option> 
                         @foreach ($militaryTreatment as $record) 
                           <option value="{{$record->id}}">{{$record->name}}</option> 
@@ -382,7 +382,7 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="qualification_date"> التاريخ  </label> 
-                      <input type="text" id="date_qualification" class="form-control" name="date_qualification" placeholder="2015">  
+                      <input type="text" id="qualification_date" class="form-control" name="qualification_date" placeholder="2015">  
                     </div>
                   </div>  
                   <div class="col-md-3"> 
@@ -390,8 +390,8 @@
                       <label for="qualification_round">  الدور </label> 
                       <select class="form-control" name="qualification_round"  id="qualification_round" required> 
                         <option value="">.........  </option>
-                        <option  value="first">الاول</option> 
-                        <option  value="second">الثاني</option>    
+                        <option  value="أول">الاول</option> 
+                        <option  value="ثاني">الثاني</option>    
                       </select>
                     </div>
                   </div>       
@@ -485,26 +485,21 @@
                 <div class="row">  
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="functional_degree_id">  الدرجة الوظيفية</label> 
-                      <select class="form-control" name="functional_degree_id"  id="functional_degree_id" required> 
+                      <label for="financial_degree_id">  الدرجة الوظيفية</label> 
+                      <select class="form-control" name="financial_degree_id"  id="financial_degree_id" required> 
                         <option value="">.........  </option>
                         @foreach ($financialDegree as $record) 
                           <option value="{{$record->id}}">{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
-                  </div>   
+                  </div>  
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="cader_id"> الكادر</label> 
-                      <select class="form-control" name="cader_id"  id="cader_id" required> 
-                        <option value="">.........  </option>
-                        @foreach ($cader as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
-                        @endforeach
-                      </select>
+                      <label for="degree_date">  تاريخ الدرجة الوظيفية</label> 
+                      <input  type="text" id="degree_date" class="form-control flatpickr-basic" name="degree_date" placeholder="YYYY-MM-DD" required>  
                     </div>
-                  </div>    
+                  </div>     
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="join_date">تاريخ التوظيف </label> 
@@ -516,7 +511,7 @@
   
               <div class="col-md-12">  
                 <div class="row">  
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label for="job_style_id">   اسلوب شغل الوظيفة</label> 
                       <select class="form-control" name="job_style_id"  id="job_style_id" required> 
@@ -527,7 +522,18 @@
                       </select>
                     </div>
                   </div>   
-                  <div class="col-md-4">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="cader_id"> الكادر</label> 
+                      <select class="form-control" name="cader_id"  id="cader_id" required> 
+                        <option value="">.........  </option>
+                        @foreach ($cader as $record) 
+                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>  
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label for="job_status_id"> الحالة الوظيفية</label> 
                       <select class="form-control" name="job_status_id"  id="job_status_id" required> 
@@ -538,7 +544,7 @@
                       </select>
                     </div>
                   </div>    
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label for="nomination_type_id">نوع التعيين  </label> 
                       <select class="form-control" name="nomination_type_id"  id="nomination_type_id" required> 

@@ -263,10 +263,10 @@ $configData = Helper::applClasses();
     {{-- to show all menu --}}
 
      @php
-    $show = "1"; 
+    $show = "2"; 
     @endphp 
     
-     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="display: {{$show === "1" ? 'none' : '' }}" > 
+     <ul class="navigation navigation-main" id="main-menu-navigation2" data-menu="menu-navigation" style="display: {{$show === "1" ? 'none' : '' }}" > 
           
            @if(isset($menuData[0]))
           @foreach($menuData[0]->menu as $menu)

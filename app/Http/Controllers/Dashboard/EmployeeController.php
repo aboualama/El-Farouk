@@ -55,10 +55,11 @@ class EmployeeController extends Controller
             'family_name'           => $request->family_name,
             'national_id'           => $request->national_id,
             'birth_address'         => $request->birth_address,
+            'birth_center'          => $request->birth_center,
             'birth_city'            => $request->birth_city,
             'birth_date'            => $request->birth_date,
             'join_date'             => $request->join_date,
-            'gender_id'             => $request->gender_id,
+            'gender_id'             => ($request->gender == 'ذكر') ? 1 : 2,
             'health_status_id'      => $request->health_status_id,
             'social_status_id'      => $request->social_status_id,
             'military_treatment_id' => $request->military_treatment_id,
@@ -66,6 +67,9 @@ class EmployeeController extends Controller
         ]);  
             
         $this->addPhoneNumber($request, $record->id);
+        $this->addResidenceAddress($request, $record->id);
+        $this->addQualification($request, $record->id);
+        $this->addJobHistory($request, $record->id);
     }
     
  

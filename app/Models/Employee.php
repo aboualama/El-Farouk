@@ -16,7 +16,7 @@ class Employee extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['first_name', 'middle_name', 'last_name', 'family_name', 'national_id', 'birth_address', 'birth_city', 'birth_date', 'join_date', 'gender_id', 'health_status_id', 'social_status_id', 'military_treatment_id', 'military_summons'];
+    protected $fillable = ['first_name', 'middle_name', 'last_name', 'family_name', 'national_id', 'birth_address', 'birth_city', 'birth_center', 'birth_date', 'join_date', 'gender_id', 'health_status_id', 'social_status_id', 'military_treatment_id', 'military_summons'];
 
     public function phones()
     {

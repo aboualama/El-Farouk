@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration {
 			$table->string('family_name');
 			$table->string('national_id')->unique();
 			$table->string('birth_address');
+			$table->string('birth_center');
 			$table->string('birth_city');
 			$table->datetime('birth_date');
 			$table->datetime('join_date');   
