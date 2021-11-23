@@ -178,7 +178,8 @@ return [
         App\Providers\MenuServiceProvider::class,
 
 
-        
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         App\Providers\ComposerServiceProvider::class, 
         
         Alkoumi\LaravelHijriDate\LaravelHijriDateServiceProvider::class, 
@@ -238,6 +239,7 @@ return [
         // custom theme helper
         'Helper' => App\Helpers\Helper::class,
          
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
         'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class
 

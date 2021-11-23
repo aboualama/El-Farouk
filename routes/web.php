@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
   Route::resource('employee', EmployeeController::class);
   Route::get('employee/list/data', [EmployeeController::class,'getemployees'])->name('employee-datatables');    
   Route::get('get_sub_group', [EmployeeController::class,'get_sub_group'])->name('get_sub_group'); 
+  Route::get('export', [EmployeeController::class,'export']);
 
 
 

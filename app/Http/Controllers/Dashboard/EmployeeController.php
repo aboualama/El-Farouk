@@ -15,8 +15,10 @@ use Illuminate\Http\Request;
 use App\Models\NominationType;
 use App\Models\FinancialDegree;
 use App\Models\FunctionalGroup;
+use App\Exports\EmployeesExport;
 use App\Models\MilitaryTreatment;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Traits\EmployeeAddOtherDataTrait;
 use App\Traits\EmployeeEditOtherDataTrait;
 
@@ -125,4 +127,9 @@ class EmployeeController extends Controller
   }
 
  
+  public function export() 
+  {
+    $invoice = Employee::get()->load('phones'); 
+      return Excel::download(new EmployeesExport($invoice), 'EmployeesExports.xlsx');
+  }
 }
