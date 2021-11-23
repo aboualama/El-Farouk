@@ -13,16 +13,14 @@
     <!-- Login v1 -->
     <div class="card mb-0">
       <div class="card-body">
-        
+
         <div class="" style="margin: 10px auto;">
-          <div class="form-group">   
-            <img class="img-fluid rounded" src="{{asset('uploads/image/setting/')}}/{{$setting->logo}}" style="max-width: 100px; max-height: 100px; display: block; margin: 0 auto;" /> 
+          <div class="form-group">
+            <img class="img-fluid rounded" src="{{asset('uploads/image/setting/')}}/{{$setting->logo}}" style="max-width: 100px; max-height: 100px; display: block; margin: 0 auto;" />
           </div>
-        </div> 
+        </div>
 
         <h2 class="brand-text text-primary mb-2 mt-2 text-center"> {{$settings->name}}</h2>
-        <h4 class="card-title mb-1">مرحبا بعودتك من جديد! 👋</h4>
-        <p class="card-text mb-2">برجاء التاكد من ادخال البيانات بشكل صحيح</p>
 
         <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
           @csrf
@@ -73,7 +71,7 @@
         <div class="divider my-2">
           <div class="divider-text">شكرا لك</div>
         </div>
-{{-- 
+{{--
         <div class="auth-footer-btn d-flex justify-content-center">
           <a href="javascript:void(0)" class="btn btn-facebook">
             <i data-feather="facebook"></i>

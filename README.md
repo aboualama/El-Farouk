@@ -42,6 +42,12 @@
  php artisan optimize:clear
 ```
 
+###### change folder mode read/write
 
-## License
-[El-Farouk](https://aboualama.com/)
+```bash
+$ sudo chown -R root:www-data storage/
+$ sudo chown -R root:www-data bootstrap/cache
+$ sudo chgrp -R www-data storage bootstrap/cache
+$ sudo chmod -R ug+rwx storage bootstrap/cache 
+$ sudo php artisan storage:link
+```
