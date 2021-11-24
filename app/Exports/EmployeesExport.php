@@ -3,14 +3,31 @@
 namespace App\Exports;
 
 use App\Models\Employee;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Concerns\WithDrawings;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Events\BeforeExport; 
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class EmployeesExport implements FromCollection, WithHeadings, WithDrawings
+class EmployeesExport implements FromView, WithEvents, WithStyles, WithColumnWidths
 {
+    public function columnWidths(): array
+    {
+        return [
+            'A' => 55,
+            'B' => 45,            
+        ];
+    }
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            1    => ['font' => ['size' => 16]], 
+        ];
+    }
+    
     
     public function registerEvents(): array
     {
@@ -20,31 +37,12 @@ class EmployeesExport implements FromCollection, WithHeadings, WithDrawings
             },
         ];
     }
-   
-    public function drawings()
-    {
-        $drawing = new Drawing();
-        $drawing->setName('Logo');
-        $drawing->setDescription('This is my logo');
-        $drawing->setPath(public_path('/uploads/image/setting/logo.jpg'));
-        $drawing->setHeight(90);
-        $drawing->setCoordinates('B3');
 
-        return $drawing;
-    }
-     
 
-    public function headings(): array
+    public function view(): View
     {
-        return [
-            '#',
-            'User',
-            'Date',
-        ];
-    }
-
-    public function collection()
-    {
-        return Employee::all();
+        return view('exports.excel.employees', [
+            'employee' => Employee::get() 
+        ]);
     }
 }

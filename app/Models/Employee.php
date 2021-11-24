@@ -23,6 +23,26 @@ class Employee extends Model
         return $this->hasMany(Phone::class);
     }
 
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class);
+    }
+
+    public function health_status()
+    {
+        return $this->belongsTo(HealthStatus::class);
+    }
+
+    public function social_status()
+    {
+        return $this->belongsTo(SocialStatus::class);
+    }
+
+    public function military_treatment()
+    {
+        return $this->belongsTo(MilitaryTreatment::class);
+    }
+
     public function qualification()
     {
         return $this->belongsToMany(Qualification::class);

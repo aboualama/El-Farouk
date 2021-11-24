@@ -21,6 +21,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Traits\EmployeeAddOtherDataTrait;
 use App\Traits\EmployeeEditOtherDataTrait;
+use PDF;
 
 class EmployeeController extends Controller
 {
@@ -115,21 +116,31 @@ class EmployeeController extends Controller
     }
 
     public function getemployees()
-  {
-    $data['data'] = Employee::get()->load('phones'); 
-    return $data ;
-  }
+    {
+        $data['data'] = Employee::get()->load('phones'); 
+        return $data ;
+    }
 
-  public function get_sub_group(Request $request)
-  {
-      $sub_group = SubGroup::where('functional_group_id', $request->id)->get(); 
-      return $sub_group;
-  }
+    public function get_sub_group(Request $request)
+    {
+        $sub_group = SubGroup::where('functional_group_id', $request->id)->get(); 
+        return $sub_group;
+    }
 
- 
-  public function export() 
-  {
-    $invoice = Employee::get()->load('phones'); 
-      return Excel::download(new EmployeesExport($invoice), 'EmployeesExports.xlsx');
-  }
+    
+
+    public function export_employees_sheet() 
+    { 
+        return Excel::download(new EmployeesExport(), 'EmployeesExports.xlsx');
+    }
+    
+
+    public function employee_receipt_work($id)
+    {       
+        $employee = Employee::find($id);  
+        $pdf =  PDF::loadView('exports.pdf.receipt_work', ['employee' => $employee]); 
+        return $pdf->stream('employee.pdf');      
+    } 
+
+
 }

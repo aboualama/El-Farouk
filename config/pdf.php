@@ -13,8 +13,8 @@ return [
     'margin_footer'        => 0,
 
     'orientation'          => 'P',
-    'title'                => 'برنامج العهدة المدرسية',
-    'author'               => 'برنامج العهدة المدرسية',
+    'title'                => 'برنامج الفاروق لادارة شئون العاملين',
+    'author'               => 'برنامج الفاروق لادارة شئون العاملين',
     'watermark'            => '',
     'show_watermark'       => false,
     'watermark_font'       => 'sans-serif',

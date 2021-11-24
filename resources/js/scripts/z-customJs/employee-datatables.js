@@ -164,8 +164,11 @@
               'حذف </a>' +
               '</div>' + 
               '</div>' + 
-              '<a href="/employee/view/' + id +'" class="item-edit edit-record" data-id="' + id +'">' +
-              feather.icons['eye'].toSvg({ class: 'font-small-4' }) +
+              // '<a href="/employee/view/' + id +'" class="item-edit edit-record" data-id="' + id +'">' +
+              // feather.icons['eye'].toSvg({ class: 'font-small-4' }) +
+              // '</a>' + 
+              '<a href="/employee_receipt_work/' + id +'" class="item-edit edit-record" data-id="' + id +'">' +
+              feather.icons['file-text'].toSvg({ class: 'font-small-4' }) +
               '</a>'   
             );
           }
@@ -240,6 +243,16 @@
           init: function (api, node, config) {
             $(node).removeClass('btn-secondary');
           }
+        } , 
+
+
+        
+        {
+          text: feather.icons['download'].toSvg({ class: 'mr-50 font-small-4' }) + 'تصدير ملف اكسيل',
+          className: 'btn btn-warning ml-50',
+          action: function ( e, dt, button, config ) {
+            window.location = '/export_employees_sheet/';
+          }, 
         } 
 
       ],
