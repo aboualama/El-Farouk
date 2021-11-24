@@ -12,8 +12,8 @@ class CreateLanguagesTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->string('name');
-			$table->enum('level', array('Beginner', 'Intermediate', 'Proficient', 'Fluent', 'Native')); 
-			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->enum('level', array('Beginner', 'Intermediate', 'Proficient', 'Fluent', 'Native'));
+			$table->foreignId('employee_id');
 		});
 	}
 

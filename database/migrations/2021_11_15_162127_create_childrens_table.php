@@ -14,8 +14,8 @@ class CreateChildrensTable extends Migration {
 			$table->softDeletes();
 			$table->string('name');
 			$table->enum('gender', array('male', 'female'));
-			$table->datetime('birth_date'); 
-			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->datetime('birth_date');
+			$table->foreignId('employee_id');
 		});
 	}
 

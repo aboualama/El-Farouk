@@ -21,12 +21,12 @@ class CreateEmployeesTable extends Migration {
 			$table->string('birth_center');
 			$table->string('birth_city');
 			$table->datetime('birth_date');
-			$table->datetime('join_date');   
+			$table->datetime('join_date');
 			$table->string('military_summons');
-			$table->foreignId('gender_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-			$table->foreignId('health_status_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-			$table->foreignId('social_status_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-			$table->foreignId('military_treatment_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+			$table->foreignId('gender_id');
+			$table->foreignId('health_status_id');
+			$table->foreignId('social_status_id');
+			$table->foreignId('military_treatment_id');
 		});
 	}
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class UserSeeder extends Seeder
     {
       $user = \App\Models\User::create([
         'name' => 'admin',
-        'phone' => '0123456789',
-        'email' => 'admin@gmail.com',
+        'phone' => '01234567'.Str::random(2),
+        'email' => Str::random(2).'dmin@gmail.com',
         'status' => 'مفعل',
         'password' => bcrypt('123456'),
         'email_verified_at' => now(),

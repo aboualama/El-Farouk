@@ -14,7 +14,7 @@ class CreateSubGroupsTable extends Migration {
 			$table->softDeletes();
 			$table->string('name');
 			$table->integer('code');
-			$table->foreignId('functional_group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->foreignId('functional_group_id');
 		});
 	}
 

@@ -17,8 +17,8 @@ class CreatePhonesTable extends Migration
             $table->id();
             $table->timestamps();
 			$table->softDeletes();
-			$table->string('number'); 
-			$table->foreignId('employee_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete(); 
+			$table->string('number');
+			$table->foreignId('employee_id');
         });
     }
 
