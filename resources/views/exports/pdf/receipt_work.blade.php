@@ -559,7 +559,7 @@
 
     <table>
       <tr class="xxx">
-        <td  style="text-align: right; height:50px; width:40%"> <span style="font-size: 24px;">الاسم:</span> {{ $employee->first_name . ' ' . $employee->middle_name . ' ' . $employee->last_name . ' ' . $employee->family_name}}  </td> 
+        <td  style="text-align: right; height:50px; width:40%"> <span style="font-size: 24px;">الاسم:</span> {{ $employee->full_name}}  </td> 
         <td style="text-align: right"> <span style="font-size: 24px;">تاريخ الميلاد:</span> {{date("Y-m-d", strtotime($employee->birth_date)) }}  	</td>
       </tr>
       <tr class="xxx">
@@ -583,14 +583,10 @@
       </tr>
       <tr class="xxx">
         <td style="text-align: right; height:50px; width:40%"> <span style="font-size: 24px;"> محل الاقامة:</span>
-          @foreach($employee->address as $address)
-           {{ $address->residence_address  . ' ' . $address->residence_center . ' ' . $address->residence_city}} 
-          @endforeach   
+          {{ $employee->address->first()->residence_address  . ' ' . $employee->address->first()->residence_center . ' ' . $employee->address->first()->residence_city}} 
         </td> 
         <td style="text-align: right"> <span style="font-size: 24px;"> رقم التليفون:</span> 
-          @foreach($employee->phones as $phone)
-           {{ $phone->number }} -  
-          @endforeach  	
+          {{$employee->phones->first()->number}}
         </td>
       </tr>
       <tr class="xxx">

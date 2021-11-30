@@ -18,7 +18,7 @@ class Qualification extends Model
 
     public function employees()
     {
-        return $this->belongsToMany(Employee::class);
+        return $this->belongsToMany(Employee::class)->withPivot('qualification_date', 'qualification_round', 'qualification_degree', 'qualification_major', 'qualification_source');
     }
 
 }

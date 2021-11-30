@@ -45,7 +45,7 @@ class Employee extends Model
 
     public function qualification()
     {
-        return $this->belongsToMany(Qualification::class);
+        return $this->belongsToMany(Qualification::class)->withPivot('qualification_date', 'qualification_round', 'qualification_degree', 'qualification_major', 'qualification_source');
     }
 
     public function jobs_history()
@@ -68,4 +68,13 @@ class Employee extends Model
         return $this->hasMany(Language::class);
     }
 
+
+    
+    protected $appends = ['full_name'];
+
+
+    public function getFullNameAttribute()
+    { 
+        return $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name . ' ' . $this->family_name; 
+    }
 }

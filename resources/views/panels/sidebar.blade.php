@@ -232,6 +232,20 @@ $configData = Helper::applClasses();
       
       
 
+      <li class="nav-item {{ Route::currentRouteName() === ''  ? 'active' : '' }} {{ $custom_classes }}">
+        <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
+          <i data-feather="printer"></i>
+          <span class="menu-title text-truncate">المطبوعات</span> 
+        </a>  
+        <ul class="menu-content"> 
+          <li class="nav-item {{ Route::currentRouteName() === "app-settings" ? 'active' : '' }} {{ $custom_classes }}">
+            <a href="/reports" class="d-flex align-items-center" target="_self">
+              <i data-feather="circle"></i>
+              <span class="menu-title text-truncate">المطبوعات   </span> 
+            </a> 
+          </li>    
+        </ul> 
+      </li>
 
 
 

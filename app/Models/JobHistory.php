@@ -26,6 +26,12 @@ class JobHistory extends Model
         return $this->belongsTo(FinancialDegree::class);
     }
 
+
+    public function sub_group()
+    {
+        return $this->belongsTo(SubGroup::class);
+    }
+
     public function job_style()
     {
         return $this->belongsTo(JobStyle::class);

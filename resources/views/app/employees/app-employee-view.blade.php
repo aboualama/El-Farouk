@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'User View')
+@section('title', ' عرض بيانات الموظف')
 
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset(mix('vendors/css/tables/datatable/dataTables.bootstrap4.min.css'))}}">
@@ -25,26 +25,27 @@
     <div class="col-xl-9 col-lg-8 col-md-7">
       <div class="card user-card">
         <div class="card-body">
+          <h1 class="mb-2">عرض بيانات الموظف</h1>
           <div class="row">
             <div class="col-xl-6 col-lg-12 d-flex flex-column justify-content-between border-container-lg">
               <div class="user-avatar-section">
                 <div class="d-flex justify-content-start">
-                  <img
+                  {{-- <img
                     class="img-fluid rounded"
                     src="{{asset('images/avatars/7.png')}}"
                     height="104"
                     width="104"
                     alt="User avatar"
-                  />
+                  /> --}}
                   <div class="d-flex flex-column ml-1">
                     <div class="user-info mb-1">
                       <h4 class="mb-0">{{$employee->full_name}}</h4>
-                      <span class="card-text">eleanor.aguilar@gmail.com</span>
-                    </div>
+                      <span class="card-text">  {{$employee->national_id}}</span>
+                    </div> 
                     <div class="d-flex flex-wrap">
-                      <a href="{{url('employee/edit' , $employee->id)}}" class="btn btn-primary">Edit</a>
+                      <a href="{{url('employee' , $employee->id)}}/edit" class="btn btn-primary">تعديل</a>
                       {{-- <button class="btn btn-outline-danger ml-1">Delete</button> --}}
-                      <a href="javascript:;" class="btn btn-outline-danger ml-1 confirm confirm_row_{{$employee->id}}" onclick="confirmrow({{$employee->id}})" data-id="{{ $employee->id }}" data-location="10" data-route="employee" data-a_name="{{$employee->name}}"> Delete</a>
+                      <a href="javascript:;" class="btn btn-outline-danger ml-1 confirm confirm_row_{{$employee->id}}" onclick="confirmrow({{$employee->id}})" data-id="{{ $employee->id }}" data-location="10" data-route="employee" data-a_name="{{$employee->full_name}}"> حذف</a>
                     </div>
                   </div>
                 </div>
@@ -56,7 +57,7 @@
                   </div>
                   <div class="ml-1">
                     <h5 class="mb-0">23.3k</h5>
-                    <small>Monthly Sales</small>
+                    <small> الراتب الحالي</small>
                   </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -65,7 +66,7 @@
                   </div>
                   <div class="ml-1">
                     <h5 class="mb-0">$99.87K</h5>
-                    <small>Annual Profit</small>
+                    <small>الاجر السنوي </small>
                   </div>
                 </div>
               </div>
@@ -75,37 +76,37 @@
                 <div class="d-flex flex-wrap">
                   <div class="user-info-title">
                     <i data-feather="user" class="mr-1"></i>
-                    <span class="card-text user-info-title font-weight-bold mb-0">Username</span>
+                    <span class="card-text user-info-title font-weight-bold mb-0">تاريخ الميلاد</span>
                   </div>
-                  <p class="card-text mb-0">eleanor.aguilar</p>
+                  <p class="card-text mb-0">{{date("Y-m-d", strtotime($employee->birth_date)) }}</p>
                 </div>
                 <div class="d-flex flex-wrap my-50">
                   <div class="user-info-title">
                     <i data-feather="check" class="mr-1"></i>
-                    <span class="card-text user-info-title font-weight-bold mb-0">Status</span>
+                    <span class="card-text user-info-title font-weight-bold mb-0">النوع</span>
                   </div>
-                  <p class="card-text mb-0">Active</p>
+                  <p class="card-text mb-0">{{$employee->gender->name}}</p>
                 </div>
                 <div class="d-flex flex-wrap my-50">
                   <div class="user-info-title">
                     <i data-feather="star" class="mr-1"></i>
-                    <span class="card-text user-info-title font-weight-bold mb-0">Role</span>
+                    <span class="card-text user-info-title font-weight-bold mb-0">الحالة الاجتماعية</span>
                   </div>
-                  <p class="card-text mb-0">Admin</p>
+                  <p class="card-text mb-0">{{$employee->social_status->name}}</p>
                 </div>
                 <div class="d-flex flex-wrap my-50">
                   <div class="user-info-title">
                     <i data-feather="flag" class="mr-1"></i>
-                    <span class="card-text user-info-title font-weight-bold mb-0">Country</span>
+                    <span class="card-text user-info-title font-weight-bold mb-0">محل الميلاد</span>
                   </div>
-                  <p class="card-text mb-0">England</p>
+                  <p class="card-text mb-0"> {{ $employee->birth_address . ' - ' . $employee->birth_center . ' - ' . $employee->birth_city}} </p>
                 </div>
                 <div class="d-flex flex-wrap">
                   <div class="user-info-title">
                     <i data-feather="phone" class="mr-1"></i>
-                    <span class="card-text user-info-title font-weight-bold mb-0">Contact</span>
+                    <span class="card-text user-info-title font-weight-bold mb-0">رقم الهاتف</span>
                   </div>
-                  <p class="card-text mb-0">(123) 456-7890</p>
+                  <p class="card-text mb-0">{{$employee->phones->first()->number}}</p>
                 </div>
               </div>
             </div>
@@ -119,39 +120,51 @@
     <div class="col-xl-3 col-lg-4 col-md-5">
       <div class="card plan-card border-primary">
         <div class="card-header d-flex justify-content-between align-items-center pt-75 pb-1">
-          <h5 class="mb-0">Current Plan</h5>
-          <span class="badge badge-light-secondary" data-toggle="tooltip" data-placement="top" title="Expiry Date"
-            >July 22, <span class="nextYear"></span>
-          </span>
+          <h5 class="mb-0"> عرض بيانات المؤهل الحالي   </h5> 
         </div>
         <div class="card-body">
-          <div class="badge badge-light-primary">Basic</div>
+          <div class="badge badge-light-primary">{{$employee->qualification->first()->name}}</div>
           <ul class="list-unstyled my-1">
             <li>
-              <span class="align-middle">5 Users</span>
+              <div class="d-flex flex-wrap">
+                <div class="user-info-title">
+                  <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  التخصص :</span> 
+                </div>
+                <p class="card-text mb-0">{{$employee->qualification->first()->pivot->qualification_major}}</p>
+              </div>
             </li>
             <li class="my-25">
-              <span class="align-middle">10 GB storage</span>
+              <div class="d-flex flex-wrap">
+                <div class="user-info-title">
+                  <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  الدرجة   :</span>
+                </div>
+                <p class="card-text mb-0">{{$employee->qualification->first()->pivot->qualification_degree}}</p>
+              </div>
             </li>
             <li>
-              <span class="align-middle">Basic Support</span>
+              <div class="d-flex flex-wrap">
+                <div class="user-info-title">
+                  <span class="card-text user-info-title font-weight-bold mb-0 mr-1">   الجهة :</span>
+                </div>
+                <p class="card-text mb-0">{{$employee->qualification->first()->pivot->qualification_source}}</p>
+              </div>
             </li>
           </ul>
-          <button class="btn btn-primary text-center btn-block">Upgrade Plan</button>
+          <button class="btn btn-primary text-center btn-block">اضافة مؤهل جديد  </button> 
         </div>
       </div>
     </div>
-    <!-- /Plan CardEnds -->
+  <!-- /Plan CardEnds -->
   </div>
   <!-- User Card & Plan Ends -->
 
   <!-- User Timeline & Permissions Starts -->
   <div class="row">
     <!-- information starts -->
-    <div class="col-md-6">
+    <div class="col-md-9">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title mb-2">User Timeline</h4>
+          <h4 class="card-title mb-2">الوظائف  </h4>
         </div>
         <div class="card-body">
           <ul class="timeline">
@@ -163,36 +176,8 @@
                   <span class="timeline-event-time">12 min ago</span>
                 </div>
                 <p>Invoices have been paid to the company.</p>
-                <div class="media align-items-center">
-                  <img
-                    class="mr-1"
-                    src="{{asset('images/icons/file-icons/pdf.png')}}"
-                    alt="invoice"
-                    height="23"
-                  />
-                  <div class="media-body">invoice.pdf</div>
-                </div>
               </div>
-            </li>
-            <li class="timeline-item">
-              <span class="timeline-point timeline-point-warning timeline-point-indicator"></span>
-              <div class="timeline-event">
-                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                  <h6>Client Meeting</h6>
-                  <span class="timeline-event-time">45 min ago</span>
-                </div>
-                <p>Project meeting with john @10:15am.</p>
-                <div class="media align-items-center">
-                  <div class="avatar">
-                    <img src="{{asset('images/avatars/12-small.png')}}" alt="avatar" height="38" width="38" />
-                  </div>
-                  <div class="media-body ml-50">
-                    <h6 class="mb-0">John Doe (Client)</h6>
-                    <span>CEO of Infibeam</span>
-                  </div>
-                </div>
-              </div>
-            </li>
+            </li> 
             <li class="timeline-item">
               <span class="timeline-point timeline-point-info timeline-point-indicator"></span>
               <div class="timeline-event">
@@ -208,169 +193,45 @@
       </div>
     </div>
     <!-- information Ends -->
-
-    <!-- User Permissions Starts -->
-    <div class="col-md-6">
-      <!-- User Permissions -->
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title">Permissions</h4>
-        </div>
-        <p class="card-text ml-2">Permission according to roles</p>
-        <div class="table-responsive">
-          <table class="table table-striped table-borderless">
-            <thead class="thead-light">
-              <tr>
-                <th>Module</th>
-                <th>Read</th>
-                <th>Write</th>
-                <th>Create</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Admin</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="admin-read" checked disabled />
-                    <label class="custom-control-label" for="admin-read"></label>
+    <!-- Plan Card starts-->
+      <div class="col-xl-3 col-lg-4 col-md-5">
+        <div class="card plan-card border-primary">
+          <div class="card-header d-flex justify-content-between align-items-center pt-75 pb-1">
+            <h5 class="mb-0"> عرض بيانات الوظيفة الحالية   </h5> 
+          </div>
+          <div class="card-body">
+            <div class="badge badge-light-primary">{{$employee->jobs_history->first()->sub_group->functional_group->name}}</div>
+            <ul class="list-unstyled my-1">
+              <li>
+                <div class="d-flex flex-wrap">
+                  <div class="user-info-title">
+                    <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  المسمي الوظيفي :</span>
                   </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="admin-write" disabled />
-                    <label class="custom-control-label" for="admin-write"></label>
+                  <p class="card-text mb-0">{{$employee->jobs_history->first()->job_function_name}}</p>
+                </div>
+              </li>
+              <li class="my-25">
+                <div class="d-flex flex-wrap">
+                  <div class="user-info-title">
+                    <span class="card-text user-info-title font-weight-bold mb-0 mr-1"> اسلوب شغل الوظيفة  :</span>
                   </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="admin-create" disabled />
-                    <label class="custom-control-label" for="admin-create"></label>
+                  <p class="card-text mb-0">{{$employee->jobs_history->first()->job_style->name}}</p>
+                </div>
+              </li>
+              <li>
+                <div class="d-flex flex-wrap">
+                  <div class="user-info-title">
+                    <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  الدرجة المالية :</span>
                   </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="admin-delete" disabled />
-                    <label class="custom-control-label" for="admin-delete"></label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Staff</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="staff-read" disabled />
-                    <label class="custom-control-label" for="staff-read"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="staff-write" checked disabled />
-                    <label class="custom-control-label" for="staff-write"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="staff-create" disabled />
-                    <label class="custom-control-label" for="staff-create"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="staff-delete" disabled />
-                    <label class="custom-control-label" for="staff-delete"></label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Author</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="author-read" checked disabled />
-                    <label class="custom-control-label" for="author-read"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="author-write" disabled />
-                    <label class="custom-control-label" for="author-write"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="author-create" checked disabled />
-                    <label class="custom-control-label" for="author-create"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="author-delete" disabled />
-                    <label class="custom-control-label" for="author-delete"></label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Contributor</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="contributor-read" disabled />
-                    <label class="custom-control-label" for="contributor-read"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="contributor-write" disabled />
-                    <label class="custom-control-label" for="contributor-write"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="contributor-create" disabled />
-                    <label class="custom-control-label" for="contributor-create"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="contributor-delete" disabled />
-                    <label class="custom-control-label" for="contributor-delete"></label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>User</td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="user-read" disabled />
-                    <label class="custom-control-label" for="user-read"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="user-create" disabled />
-                    <label class="custom-control-label" for="user-create"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="user-write" disabled />
-                    <label class="custom-control-label" for="user-write"></label>
-                  </div>
-                </td>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="user-delete" checked disabled />
-                    <label class="custom-control-label" for="user-delete"></label>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  <p class="card-text mb-0">{{$employee->jobs_history->first()->financial_degree->name}}</p>
+                </div>
+              </li>
+            </ul>
+            <button class="btn btn-primary text-center btn-block">اضافة وظيفة جديدة  </button> 
+          </div>
         </div>
       </div>
-      <!-- /User Permissions -->
-    </div>
-    <!-- User Permissions Ends -->
+    <!-- /Plan CardEnds -->
   </div>
   <!-- User Timeline & Permissions Ends -->
 
