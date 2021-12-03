@@ -12,16 +12,16 @@ class CreateJobHistoryTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->softDeletes();
-			$table->datetime('join_date');
-			$table->datetime('degree_date');
-			$table->string('job_function_name');
-			$table->foreignId('employee_id');
-			$table->foreignId('cader_id');
-			$table->foreignId('financial_degree_id');
-			$table->foreignId('nomination_type_id');
-			$table->foreignId('job_status_id');
-			$table->foreignId('job_style_id');
-			$table->foreignId('sub_group_id');
+			$table->datetime('join_date')->nullable();
+			$table->datetime('degree_date')->nullable();
+			$table->string('job_function_name')->nullable();
+			$table->foreignId('employee_id')->nullable();
+			$table->foreignId('cader_id')->nullable();
+			$table->foreignId('financial_degree_id')->nullable();
+			$table->foreignId('nomination_type_id')->nullable();
+			$table->foreignId('job_status_id')->nullable();
+			$table->foreignId('job_style_id')->nullable();
+			$table->foreignId('sub_group_id')->nullable();
 		});
 	}
 

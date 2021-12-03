@@ -177,7 +177,7 @@ $configData = Helper::applClasses();
         <ul class="menu-content"> 
           <li class="{{ Route::currentRouteName() === "user-list"  ? 'active' : '' }} " >
           {{-- <li class="{{ Route::currentRouteName() === "user-list"  ? 'active' : '' }} disabled" > --}}
-            <a href="/user/list" class="d-flex align-items-center" target="_self"> 
+            <a href="/user" class="d-flex align-items-center" target="_self"> 
               <i data-feather="circle"></i> 
               <span class="menu-item text-truncate">قائمة المستخدمين</span>
             </a> 
@@ -212,18 +212,12 @@ $configData = Helper::applClasses();
               <span class="menu-item text-truncate">قائمة الموظفين</span>
             </a> 
           </li> 
-          <li class="{{ Route::currentRouteName() === "employees.show"  ? 'active' : 'disabled' }}">
+          <li class="{{ Route::currentRouteName() === "employee.show"  ? 'active' : 'disabled' }}">
             <a href="/employee/view" class="d-flex align-items-center" target="_self"> 
               <i data-feather="{{ Route::currentRouteName() === "employees.show"  ? 'eye' : 'eye-off' }}"></i>  
               <span class="menu-item text-truncate">عرض بيانات موظف</span>
             </a> 
-          </li> 
-          <li class="{{ Route::currentRouteName() === "employees.edit"  ? 'active' : 'disabled' }}">
-            <a href="/employee/edit" class="d-flex align-items-center" target="_self"> 
-              <i data-feather="{{ Route::currentRouteName() === "employees.edit"  ? 'eye' : 'eye-off' }}"></i>  
-              <span class="menu-item text-truncate">تعديل بيانات موظف</span>
-            </a> 
-          </li> 
+          </li>  
         </ul> 
       </li> 
      
@@ -238,7 +232,7 @@ $configData = Helper::applClasses();
           <span class="menu-title text-truncate">المطبوعات</span> 
         </a>  
         <ul class="menu-content"> 
-          <li class="nav-item {{ Route::currentRouteName() === "app-settings" ? 'active' : '' }} {{ $custom_classes }}">
+          <li class="nav-item {{ Route::currentRouteName() === "app-reports" ? 'active' : '' }} {{ $custom_classes }}">
             <a href="/reports" class="d-flex align-items-center" target="_self">
               <i data-feather="circle"></i>
               <span class="menu-title text-truncate">المطبوعات   </span> 

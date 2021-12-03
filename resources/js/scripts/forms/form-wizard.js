@@ -13,7 +13,7 @@ $(function () {
   var bsStepper = document.querySelectorAll('.bs-stepper'),
     select = $('.select2'),
     horizontalWizard = document.querySelector('.horizontal-wizard-example'),
-    verticalWizard = document.querySelector('.vertical-wizard-example'),
+    verticalWizard = document.querySelector('.vertical-wizard-example'), 
     modernWizard = document.querySelector('.modern-wizard-example'),
     modernVerticalWizard = document.querySelector('.modern-vertical-wizard-example');
 
@@ -145,6 +145,7 @@ $(function () {
         }
       });
   }
+ 
 
   // Vertical Wizard
   // --------------------------------------------------------------------

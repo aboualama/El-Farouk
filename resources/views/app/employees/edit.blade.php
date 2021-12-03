@@ -4,7 +4,7 @@
     overflow-y: auto;
   }
 </style>
-
+ 
 
 
 
@@ -69,8 +69,8 @@
     </div>
     <div class="bs-stepper-content">
       <form id="form">
-        @csrf
-        <input type="hidden" value="employee" id="url">  
+        @csrf @method('PUT')
+        <input type="hidden" value="/employee/{{$employee->id}}" id="url">  
 
 
         <div id="account-details-vertical" class="content">
@@ -90,25 +90,25 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="first_name">  الاسم الاول</label> 
-                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder=" الإسم الأول" required  />   
+                      <input type="text" class="form-control" name="first_name" id="first_name" value="{{$employee->first_name}}"  required  />  
                     </div>
                   </div> 
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="last_name"> إسم الأب </label> 
-                      <input  type="text" id="last_name" class="form-control" name="last_name" placeholder="إسم الأب" required>  
+                      <input  type="text" id="last_name" class="form-control" name="last_name" value="{{$employee->last_name}}"  required>  
                     </div>
                   </div> 
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="middle_name"> إسم الجد</label> 
-                      <input type="text" class="form-control" name="middle_name" id="middle_name" placeholder=" إسم الجد" required  />  
+                      <input type="text" class="form-control" name="middle_name" id="middle_name" value="{{$employee->middle_name}}"  required  />  
                     </div>
                   </div>   
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="family_name"> لقب العائلة </label> 
-                      <input  type="text" id="family_name" class="form-control" name="family_name" placeholder="لقب العائلة" required>  
+                      <input  type="text" id="family_name" class="form-control" name="family_name" value="{{$employee->family_name}}"  required>  
                     </div>
                   </div>     
                 </div> 
@@ -119,19 +119,19 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="national_id"> الرقم القومي</label> 
-                      <input type="number" class="form-control" name="national_id" id="national_id" placeholder="27012013456789" required  />  
+                      <input type="number" class="form-control" name="national_id" id="national_id" value="{{$employee->national_id}}"  required  />  
                     </div>
                   </div>   
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="gender"> النوع</label> 
-                      <input type="text" class="form-control" name="gender" id="gender" placeholder=" ذكر / أنثي" required >  
+                      <input type="text" class="form-control" name="gender" id="gender" value="{{$employee->gender->name}}"  required >  
                     </div>
                   </div>    
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="birth_date"> تاريخ الميلاد  </label> 
-                      <input  type="text" id="birth_date" class="form-control flatpickr-basic" name="birth_date" placeholder="YYYY-MM-DD" required >  
+                      <input  type="text" id="birth_date" class="form-control flatpickr-basic" name="birth_date" value="{{date("Y-m-d", strtotime($employee->birth_date)) ?? null}}" required >  
                     </div>
                   </div>    
                 </div> 
@@ -167,7 +167,7 @@
                       <select class="form-control" name="social_status_id"  id="social_status_id" required> 
                         <option value="">.........  </option> 
                         @foreach ($socialStatus as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{($employee->social_status_id == $record->id) ? 'selected' : ''}} >{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
@@ -178,7 +178,7 @@
                       <select class="form-control" name="health_status_id"  id="health_status_id" required> 
                         <option value="">.........  </option> 
                         @foreach ($healthStatus as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{($employee->health_status_id == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
@@ -251,7 +251,7 @@
                       <select class="form-control" name="military_treatment_id"  id="military_treatment_id" required> 
                         <option value="">.........  </option> 
                         @foreach ($militaryTreatment as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{($employee->health_status_id == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
@@ -259,7 +259,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="military_summons"> الاستدعاء  </label> 
-                      <textarea class="form-control" id="military_summons" name="military_summons"></textarea> 
+                      <textarea class="form-control" id="military_summons" name="military_summons">{{$employee->military_summons}}</textarea> 
                     </div>
                   </div>     
                 </div> 
@@ -296,19 +296,19 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="birth_address"> العنوان    </label> 
-                      <input type="text" class="form-control" name="birth_address" id="birth_address" placeholder="5 شارع الجيش">  
+                      <input type="text" class="form-control" name="birth_address" id="birth_address" value="{{$employee->birth_address}}">  
                     </div>
                   </div>    
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="birth_center"> مركز / قسم  </label> 
-                      <input type="text" id="birth_center" class="form-control" name="birth_center" placeholder="المنتزة أول" >  
+                      <input type="text" id="birth_center" class="form-control" name="birth_center" value="{{$employee->birth_center}}">  
                     </div>
                   </div>  
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="birth_city"> المحافظة  </label> 
-                      <input type="text" id="birth_city" class="form-control" name="birth_city" placeholder="الاسكندرية" >  
+                      <input type="text" id="birth_city" class="form-control" name="birth_city" value="{{$employee->birth_city}}" >  
                     </div>
                   </div>    
                 </div> 
@@ -321,19 +321,19 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="residence_address"> العنوان    </label> 
-                      <input type="text" class="form-control" name="residence_address" id="residence_address" placeholder="1 شارع الشهداء">  
+                      <input type="text" class="form-control" name="residence_address" id="residence_address" value="{{$employee->currently_address()->residence_address}}">  
                     </div>
                   </div>    
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="residence_center"> مركز / قسم  </label> 
-                      <input type="text" id="residence_center" class="form-control" name="residence_center" placeholder="دسوق">  
+                      <input type="text" id="residence_center" class="form-control" name="residence_center" value="{{$employee->currently_address()->residence_center}}">  
                     </div>
                   </div>  
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="residence_city"> المحافظة  </label> 
-                      <input type="text" id="residence_city" class="form-control" name="residence_city" placeholder="طنطا">  
+                      <input type="text" id="residence_city" class="form-control" name="residence_city" value="{{$employee->currently_address()->residence_city}}">  
                     </div>
                   </div>       
                 </div> 
@@ -374,7 +374,7 @@
                       <select class="form-control" name="qualification_id"  id="qualification_id" required> 
                         <option value="">.........  </option> 
                         @foreach ($qualification as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{($employee->currently_qualification()->pivot->qualification_id ?? null) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div> 
@@ -382,16 +382,16 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="qualification_date"> التاريخ  </label> 
-                      <input type="text" id="qualification_date" class="form-control" name="qualification_date" placeholder="2015">  
+                      <input type="text" id="qualification_date" class="form-control" name="qualification_date" value="{{$employee->currently_qualification()->pivot->qualification_date}}">  
                     </div>
                   </div>  
                   <div class="col-md-3"> 
                     <div class="form-group">
-                      <label for="qualification_round">  الدور </label> 
+                      <label for="qualification_round">  الدور </label>   
                       <select class="form-control" name="qualification_round"  id="qualification_round" required> 
                         <option value="">.........  </option>
-                        <option  value="أول">الاول</option> 
-                        <option  value="ثاني">الثاني</option>    
+                        <option value="أول" {{(($employee->currently_qualification()->pivot->qualification_round ?? null) == 'أول') ? 'selected' : ''}}>الاول</option> 
+                        <option value="ثاني" {{(($employee->currently_qualification()->pivot->qualification_round ?? null) == 'sssss') ? 'selected' : ''}}>الثاني</option>    
                       </select>
                     </div>
                   </div>       
@@ -403,19 +403,19 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="qualification_source"> جهة الاصدار    </label> 
-                      <input type="text" class="form-control" name="qualification_source" id="qualification_source" placeholder="جامعة الاسكندرية - كلية التجارة">  
+                      <input type="text" class="form-control" name="qualification_source" id="qualification_source"  value="{{$employee->currently_qualification()->pivot->qualification_source ?? null}}">  
                     </div>
                   </div>    
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="qualification_degree"> درجة المؤهل  </label> 
-                      <input type="text" id="qualification_degree" class="form-control" name="qualification_degree" placeholder="امتياز">  
+                      <input type="text" id="qualification_degree" class="form-control" name="qualification_degree"  value="{{$employee->currently_qualification()->pivot->qualification_degree ?? null}}">  
                     </div>
                   </div>  
                   <div class="col-md-3"> 
                     <div class="form-group">
                       <label for="qualification_major"> التخصص   </label> 
-                      <input type="text" id="qualification_major" class="form-control" name="qualification_major" placeholder="اقتصاد ">  
+                      <input type="text" id="qualification_major" class="form-control" name="qualification_major"  value="{{$employee->currently_qualification()->pivot->qualification_major ?? null}}">  
                     </div>
                   </div>       
                 </div> 
@@ -457,7 +457,7 @@
                       <select class="form-control" name="functional_group_id" id="functional_group_id" > 
                         <option  value="">.........  </option>
                         @foreach ($functionalGroup as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{(($employee->currently_job()->sub_group->functional_group->id ?? null) == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div> 
@@ -467,7 +467,8 @@
                     <div class="form-group">
                       <label for="sub_group_id"> المجموعة النوعية</label>
                       <select class="form-control" name="sub_group_id" id="sub_group_id"> 
-                        <option  value=""> اختار المجموعة الوظيفية اولا</option>
+                        <option value="{{$employee->currently_job()->sub_group->id ?? null}}">{{$employee->currently_job()->sub_group->name ?? null}}</option> 
+                        <option disabled> يجب اعادة اختيار المجموعة الوظيفية اولا</option>
                       </select>
                     </div> 
                   </div> 
@@ -475,7 +476,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="job_function_name">  المسمى الوظيفى </label>
-                      <input type="text" class="form-control" name="job_function_name" id="job_function_name" placeholder="طبيب اسنان" required  />  
+                      <input type="text" class="form-control" name="job_function_name" id="job_function_name" value="{{$employee->currently_job()->job_function_name ?? null}}" required  />  
                     </div> 
                   </div>  
                 </div> 
@@ -489,7 +490,7 @@
                       <select class="form-control" name="financial_degree_id"  id="financial_degree_id" required> 
                         <option value="">.........  </option>
                         @foreach ($financialDegree as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{(($employee->currently_job()->financial_degree_id ?? null) == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
@@ -497,13 +498,13 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="degree_date">  تاريخ الدرجة الوظيفية</label> 
-                      <input  type="text" id="degree_date" class="form-control flatpickr-basic" name="degree_date" placeholder="YYYY-MM-DD" required>  
+                      <input  type="text" id="degree_date" class="form-control flatpickr-basic" name="degree_date" value="{{date("Y-m-d", strtotime($employee->currently_job()->degree_date)) ?? null}}" required>  
                     </div>
                   </div>     
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="join_date">تاريخ التوظيف </label> 
-                      <input  type="text" id="join_date" class="form-control flatpickr-basic" name="join_date" placeholder="YYYY-MM-DD" required>  
+                      <input  type="text" id="join_date" class="form-control flatpickr-basic" name="join_date" value="{{date("Y-m-d", strtotime($employee->currently_job()->join_date)) ?? null}}" required>  
                     </div>
                   </div>    
                 </div> 
@@ -517,7 +518,7 @@
                       <select class="form-control" name="job_style_id"  id="job_style_id" required> 
                         <option value="">.........  </option>
                         @foreach ($jobStyle as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{(($employee->jobs_history->first()->job_style_id ?? null) == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
@@ -528,7 +529,7 @@
                       <select class="form-control" name="cader_id"  id="cader_id" required> 
                         <option value="">.........  </option>
                         @foreach ($cader as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{(($employee->currently_job()->cader_id ?? null) == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
@@ -539,7 +540,7 @@
                       <select class="form-control" name="job_status_id"  id="job_status_id" required> 
                         <option value="">.........  </option>
                         @foreach ($jobStatus as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{(($employee->jobs_history->first()->job_status_id ?? null) == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>
                     </div>
@@ -550,7 +551,7 @@
                       <select class="form-control" name="nomination_type_id"  id="nomination_type_id" required> 
                         <option value="">.........  </option>
                         @foreach ($nominationType as $record) 
-                          <option value="{{$record->id}}">{{$record->name}}</option> 
+                          <option value="{{$record->id}}" {{(($employee->jobs_history->first()->nomination_type_id ?? null) == $record->id) ? 'selected' : ''}}>{{$record->name}}</option> 
                         @endforeach
                       </select>  
                     </div>
@@ -590,15 +591,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="cell1"> رقم الهاتف / واتساب</label> 
-                          <input type="number" class="form-control" name="cell[]" id="cell1" placeholder="01223456789">  
-                      <div class="valid-feedback">Looks good!</div>
-                      <div class="invalid-feedback">Please enter your name.</div>
+                          <input type="number" class="form-control" name="cell[]" id="cell1" value="{{$employee->phones[0]->number ?? null}}">  
                         </div>
                       </div>    
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="cell2"> رقم اخر </label> 
-                          <input  type="number" id="cell2" class="form-control" name="cell[]" placeholder="01223456789">  
+                          <input  type="number" class="form-control" name="cell[]" id="cell2" value="{{$employee->phones[1]->number ?? null}}">  
                         </div>
                       </div>     
                     </div> 
@@ -633,5 +632,4 @@
       </form> 
     </div>
   </div>
-</section> 
- 
+</section>  

@@ -63,4 +63,60 @@ trait EmployeeAddOtherDataTrait {
             ]);    
     }
 
+
+         
+
+    public function addEmployeeData($request , $id){ 
+
+        $this->addPhoneNumber($request, $id);
+        $this->addResidenceAddress($request, $id);
+        $this->addQualification($request, $id);
+        $this->addJobHistory($request, $id);  
+
+    }
+
+
+ 
+    
+    public function rules()
+    {
+        return  $rules = [  
+            'first_name'            => 'required',
+            'middle_name'           => 'required',
+            'last_name'             => 'required',
+            'family_name'           => 'required',
+            'national_id'           => 'required',
+            'birth_address'         => 'required',
+            'birth_center'          => 'required',
+            'birth_city'            => 'required',
+            'birth_date'            => 'required',
+            'join_date'             => 'required',
+            'gender_id'             => 'required',
+            'health_status_id'      => 'required',
+            'social_status_id'      => 'required',
+            'military_treatment_id' => 'required',
+            'military_summons'      => 'required',
+            ]; 
+    }
+    public function message()
+    {
+        return  $message = [ 
+            'first_name.required'            => 'حقل الرقم مطلوب',
+            'middle_name.required'           => 'حقل الرقم مطلوب',
+            'last_name.required'             => 'حقل الرقم مطلوب',
+            'family_name.required'           => 'حقل الرقم مطلوب',
+            'national_id.required'           => 'حقل الرقم مطلوب',
+            'birth_address.required'         => 'حقل الرقم مطلوب',
+            'birth_center.required'          => 'حقل الرقم مطلوب',
+            'birth_city.required'            => 'حقل الرقم مطلوب',
+            'birth_date.required'            => 'حقل الرقم مطلوب',
+            'join_date.required'             => 'حقل الرقم مطلوب',
+            'gender_id.required'             => 'حقل الرقم مطلوب',
+            'health_status_id.required'      => 'حقل الرقم مطلوب',
+            'social_status_id.required'      => 'حقل الرقم مطلوب',
+            'military_treatment_id.required' => 'حقل الرقم مطلوب',
+            'military_summons.required'      => 'حقل الرقم مطلوب',
+            ]; 
+    }
+ 
 }   

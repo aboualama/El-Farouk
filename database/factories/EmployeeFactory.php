@@ -28,7 +28,7 @@ class EmployeeFactory extends Factory
             'middle_name'           => $this->faker->name,
             'last_name'             => $this->faker->name,
             'family_name'           => $this->faker->name,
-            'national_id'           => Str::random(14),
+            'national_id'           => $this->faker->unique()->numberBetween(2125796237851,39999999999950),
             'birth_address'         => $this->faker->address,
             'birth_center'          => $this->faker->city,
             'birth_city'            => $this->faker->city,

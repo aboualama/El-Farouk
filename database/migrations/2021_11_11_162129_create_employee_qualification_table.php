@@ -12,13 +12,13 @@ class CreateEmployeeQualificationTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('qualification_date');
-			$table->enum('qualification_round', ['أول', 'ثاني']);
-			$table->string('qualification_degree');
-			$table->string('qualification_major');
-			$table->string('qualification_source');
-			$table->foreignId('employee_id');
-			$table->foreignId('qualification_id');
+			$table->string('qualification_date')->nullable();
+			$table->enum('qualification_round', ['أول', 'ثاني'])->nullable();
+			$table->string('qualification_degree')->nullable();
+			$table->string('qualification_major')->nullable();
+			$table->string('qualification_source')->nullable();
+			$table->foreignId('employee_id')->nullable();
+			$table->foreignId('qualification_id')->nullable();
 		});
 	}
 

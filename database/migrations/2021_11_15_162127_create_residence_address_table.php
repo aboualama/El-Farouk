@@ -12,10 +12,10 @@ class CreateResidenceAddressTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('residence_address');
-			$table->string('residence_center');
-			$table->string('residence_city');
-			$table->foreignId('employee_id');
+			$table->string('residence_address')->nullable();
+			$table->string('residence_center')->nullable();
+			$table->string('residence_city')->nullable();
+			$table->foreignId('employee_id')->nullable();
 		});
 	}
 

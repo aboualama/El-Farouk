@@ -37,9 +37,19 @@ class JobHistory extends Model
         return $this->belongsTo(JobStyle::class);
     }
 
-    public function nomination_types()
+    public function cader()
+    {
+        return $this->belongsTo(Cader::class);
+    }
+
+    public function nomination_type()
     {
         return $this->belongsTo(NominationType::class);
+    }
+
+    public function job_status()
+    {
+        return $this->belongsTo(JobStatus::class);
     }
 
 }

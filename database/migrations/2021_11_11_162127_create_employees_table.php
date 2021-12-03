@@ -12,21 +12,21 @@ class CreateEmployeesTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('first_name');
-			$table->string('middle_name');
-			$table->string('last_name');
-			$table->string('family_name');
-			$table->string('national_id')->unique();
-			$table->string('birth_address');
-			$table->string('birth_center');
-			$table->string('birth_city');
-			$table->datetime('birth_date');
-			$table->datetime('join_date');
-			$table->string('military_summons');
-			$table->foreignId('gender_id');
-			$table->foreignId('health_status_id');
-			$table->foreignId('social_status_id');
-			$table->foreignId('military_treatment_id');
+			$table->string('first_name')->nullable();
+			$table->string('middle_name')->nullable();
+			$table->string('last_name')->nullable();
+			$table->string('family_name')->nullable();
+			$table->string('national_id')->unique()->nullable();
+			$table->string('birth_address')->nullable();
+			$table->string('birth_center')->nullable();
+			$table->string('birth_city')->nullable();
+			$table->datetime('birth_date')->nullable();
+			$table->datetime('join_date')->nullable();
+			$table->string('military_summons')->nullable();
+			$table->foreignId('gender_id')->nullable();
+			$table->foreignId('health_status_id')->nullable();
+			$table->foreignId('social_status_id')->nullable();
+			$table->foreignId('military_treatment_id')->nullable();
 		});
 	}
 

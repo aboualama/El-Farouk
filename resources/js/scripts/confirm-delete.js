@@ -36,7 +36,7 @@ function confirmrow(i) {
           success: function (data) {
             toastr['success']( 'تم حذف ' + C_modal + '  بنجاح ', C_modal , {closeButton: true, tapToDismiss: false,  positionClass: 'toast-top-right', rtl: 'rtl'});  
             if(location == 10){
-                window.location.href = "/" + modal + "/list"; 
+                window.location.href = "/" + modal ; 
             }
             row.fadeOut();  
  

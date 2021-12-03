@@ -1,53 +1,29 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard; 
- 
-use App\Models\Cader;
-use App\Models\Gender;
-use App\Models\Employee;
-use App\Models\JobStyle;
-use App\Models\SubGroup;
-use App\Models\JobStatus;
-use App\Models\HealthStatus;
-use App\Models\SocialStatus;
-use App\Models\Qualification;
-use Illuminate\Http\Request; 
-use App\Models\NominationType;
-use App\Models\FinancialDegree;
-use App\Models\FunctionalGroup;
-use App\Models\MilitaryTreatment;
+  
+use App\Models\Employee; 
+use App\Models\SubGroup; 
+use Illuminate\Http\Request;  
 use App\Http\Controllers\Controller;
 use App\Traits\EmployeeAddOtherDataTrait;
 use App\Traits\EmployeeEditOtherDataTrait;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
     use EmployeeAddOtherDataTrait, EmployeeEditOtherDataTrait;
 
     public function index()
-    { 
-        $cader             = Cader::get();
-        $financialDegree   = FinancialDegree::get();
-        $functionalGroup   = FunctionalGroup::get();
-        $gender            = Gender::get();
-        $healthStatus      = HealthStatus::get();
-        $jobStatus         = JobStatus::get();
-        $jobStyle          = JobStyle::get();
-        $militaryTreatment = MilitaryTreatment::get();
-        $nominationType    = NominationType::get();
-        $qualification     = Qualification::get();
-        $socialStatus      = SocialStatus::get();
+    {  
         $pageConfigs       = ['pageHeader' => false];
-        return view('/app/employees/app_employees', [
-            'cader' => $cader, 'financialDegree' => $financialDegree, 'functionalGroup' => $functionalGroup, 'gender' => $gender, 
-            'healthStatus' => $healthStatus, 'jobStatus' => $jobStatus, 'militaryTreatment' => $militaryTreatment, 'nominationType' => $nominationType, 
-            'qualification' => $qualification, 'socialStatus' => $socialStatus, 'jobStyle' => $jobStyle, 'pageConfigs' => $pageConfigs
-        ]); 
+        return view('/app/employees/app_employees', ['pageConfigs' => $pageConfigs]); 
     }
   
  
     public function store(Request $request)
-    { 
+    {  
+        
         $record = Employee::create([
             'first_name'            => $request->first_name,
             'middle_name'           => $request->middle_name,
@@ -66,10 +42,7 @@ class EmployeeController extends Controller
             'military_summons'      => $request->military_summons,
         ]);  
             
-        $this->addPhoneNumber($request, $record->id);
-        $this->addResidenceAddress($request, $record->id);
-        $this->addQualification($request, $record->id);
-        $this->addJobHistory($request, $record->id);
+        $this->addEmployeeData($request, $record->id); 
     }
     
  
@@ -79,14 +52,11 @@ class EmployeeController extends Controller
         return view('/app/employees/app-employee-view', ['pageConfigs' => $pageConfigs, 'employee' => $employee]);
     }
  
-    public function edit(Employee $employee)
-    { 
-        $pageConfigs = ['pageHeader' => false];
-        return view('/app/employees/app-employee-edit', ['pageConfigs' => $pageConfigs, 'employee' => $employee]);
-    }
+    
  
     public function update(Request $request, Employee $employee)
-    {
+    { 
+
         $employee->update([
             'first_name'            => $request->first_name,
             'middle_name'           => $request->middle_name,
@@ -97,14 +67,14 @@ class EmployeeController extends Controller
             'birth_city'            => $request->birth_city,
             'birth_date'            => $request->birth_date,
             'join_date'             => $request->join_date,
-            'gender_id'             => $request->gender_id,
+            'gender_id'             => ($request->gender == 'ذكر') ? 1 : 2,
             'health_status_id'      => $request->health_status_id,
             'social_status_id'      => $request->social_status_id,
             'military_treatment_id' => $request->military_treatment_id,
             'military_summons'      => $request->military_summons,
         ]);
         
-        $this->editPhoneNumber($request, $employee->id);
+        // $this->editPhoneNumber($request, $employee->id);
     }
  
     public function destroy(Employee $employee)

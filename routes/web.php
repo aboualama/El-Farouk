@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     
   // Main User Route 
   Route::post('user/store', [UserController::class,'user_store'])->name('user-store');
-  Route::get('user/list', [UserController::class,'user_list'])->name('user-list');
+  Route::get('user', [UserController::class,'user_list'])->name('user-list');
   Route::get('user/list/data', [UserController::class,'getusers'])->name('user-datatables');  // note in controller
   Route::get('user/view/{id}', [UserController::class,'user_view'])->name('user-view');
   Route::get('user/edit/{id}', [UserController::class,'user_edit'])->name('user-edit');

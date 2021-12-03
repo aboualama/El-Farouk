@@ -70,11 +70,31 @@ class Employee extends Model
 
 
     
+
+
+
+
+    
     protected $appends = ['full_name'];
 
 
     public function getFullNameAttribute()
     { 
         return $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name . ' ' . $this->family_name; 
+    }
+
+    public function currently_job()
+    { 
+        return $this->jobs_history()->latest()->first();
+    }
+
+    public function currently_address()
+    { 
+        return $this->address()->latest()->first();
+    }
+
+    public function currently_qualification()
+    { 
+        return $this->qualification()->latest()->first();
     }
 }

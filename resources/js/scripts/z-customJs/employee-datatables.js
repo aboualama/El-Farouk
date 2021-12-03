@@ -66,15 +66,13 @@
           responsivePriority: 4,
           render: function (data, type, full, meta) {   
              
-              var $first_name = full['first_name'],
-                  $middle_name = full['middle_name'],
-                  $family_name = full['family_name'],
-                  $phone = full['last_name'];
+              var $full_name = full['full_name'], 
+                  $national_id = full['national_id'];
       
-              var stateNum = full['first_name'];
+              var stateNum = full['full_name'];
               var states = ['success', 'danger', 'warning'];
               var $state = states[stateNum],
-              $name = $first_name + ' ' + $middle_name + ' ' + $family_name, 
+              $name = $full_name, 
               $initials = $name.match(/./u) || [];   
               $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
               var $output = '<span class="avatar-content">' + $initials + '</span>';
@@ -93,7 +91,7 @@
               $name +
               '</span>' +
               '<small class="emp_post text-truncate text-muted">' +
-              $phone +
+              $national_id +
               '</small>' +
               '</div>' +
               '</div>';
@@ -127,12 +125,11 @@
           render: function (data, type, full, meta) {
             var $status_number = full['social_status_id'];
             var $status = {
-              1: { title: 'اعزب', class: 'badge-light-primary' },
-              2: { title: 'متزوج', class: ' badge-light-success' },
-              3: { title: 'مطلق', class: ' badge-light-danger' },
-              4: { title: 'متزوج ويعول', class: 'badge-light-secondary' },
-              5: { title: 'مطلق ويعول', class: ' badge-light-info' },
-              6: { title: 'ارمل ويعول', class: ' badge-light-warning' }
+              1: { title: 'اعزب / أنسة', class: 'badge-light-primary' },
+              2: { title: 'متزوج / متزوجة', class: ' badge-light-success' },
+              3: { title: 'متزوج ويعول', class: ' badge-light-danger' },
+              4: { title: 'مطلق / مطلقة', class: 'badge-light-secondary' }, 
+              5: { title: 'ارمل / ارملة', class: ' badge-light-warning' }
               };
             if (typeof $status[$status_number] === 'undefined') {
               return data;
@@ -518,4 +515,8 @@
   
 
 
+
+
+
+  
 });

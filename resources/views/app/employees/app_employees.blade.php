@@ -129,7 +129,6 @@
   <script src="{{ asset(mix('js/scripts/forms/form-wizard.js')) }}"></script> 
   <script src="{{ asset(mix('js/scripts/forms/form-repeater.js')) }}"></script>
   <script src="{{ asset(mix('js/scripts/z-customJs/employee-datatables.js')) }}"></script>   
-  <script src="{{ asset(mix('js/scripts/confirm-delete.js')) }}"></script> 
- 
- 
+  <script src="{{ asset(mix('js/scripts/confirm-delete.js')) }}"></script>  
+  <script src="{{ asset(mix('js/scripts/forms/form-validation.js')) }}"></script>
 @endsection 
