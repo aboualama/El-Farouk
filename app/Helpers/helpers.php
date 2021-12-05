@@ -2,9 +2,11 @@
 
 namespace App\Helpers;
 
-use Config;
-use Illuminate\Support\Str;
+use Config; 
+use App\Models\Setting; 
+use Illuminate\Support\Str; 
 
+ 
 class Helper
 {
     public static function applClasses()
@@ -160,4 +162,10 @@ class Helper
             }
         }
     }
+
+    public static function settings()
+    {
+        return Setting::first(); 
+    }
+ 
 }

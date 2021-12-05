@@ -421,9 +421,11 @@
  
 
   $('#add_new_employee').on('click', function  (e) {
-    e.preventDefault(); 
-    // alert('Submitted..!!'); 
+    e.preventDefault();  
     var url = $("#url").val(); 
+    var type = $("#type").val(); 
+    var massage = (type == 'edit') ? 'تم التعديل بنجاح' : 'تم اضافة موظف جديد بنجاح ';
+ 
     var formData = new FormData($('#form')[0]); 
     $.ajax({
         type: 'post', 
@@ -434,7 +436,7 @@
         cache: false,
         success: function (data) {  
                 toastr['success'](
-                      'تم اضافة موظف جديد بنجاح ',
+                      massage,
                       '  ادارة الموظفين ' ,
                       {
                         closeButton: true,
@@ -442,10 +444,12 @@
                         positionClass: 'toast-top-right',
                         rtl: 'rtl'
                       }
-                    );    
-
+                    );     
                     $(".modal input").empty();
                     $('.modal').modal('hide');  
+                    setInterval(function(){
+                      window.location.reload(1);
+                    }, 3000);
 
         }, error: function (xhr) {
 
@@ -490,11 +494,9 @@
 });
 
 
+ 
 
-
-
-
-  // change functional_group 
+  // change functional_group  in add and edit form
   $('#functional_group_id').on("change", function (e) {
     e.stopPropagation();
     var id = $('#functional_group_id').val();
@@ -517,6 +519,100 @@
 
 
 
+ 
+
+  $('#add_new_qualification').on('click', function  (e) {
+    e.preventDefault();   
+    var model = $("#model").val();   
+    var url = $("#new_qualification_url").val();    
+    var formData = new FormData($('#form_qualification')[0]); 
+    console.log(model);
+    $.ajax({
+        type: 'post',  
+        url: url,
+        data: formData, 
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function (data) {  
+                toastr['success'](
+                      'تم اضافة '  + model +  ' بنجاح ',
+                      '  ادارة الموظفين ' ,
+                      {
+                        closeButton: true,
+                        tapToDismiss: false, 
+                        positionClass: 'toast-top-right',
+                        rtl: 'rtl'
+                      }
+                    );     
+                    $(".modal input").empty();
+                    $('.modal').modal('hide');   
+                    setInterval(function(){
+                      window.location.reload(1);
+                    }, 3000);
+        }, error: function (xhr) {
+
+        }
+    });   
+  });
+
+
+  $('#add_new_job').on('click', function  (e) {
+    e.preventDefault();   
+    var model = $("#model").val();   
+    var url = $("#new_job_url").val();    
+    var formData = new FormData($('#form_job')[0]); 
+    console.log(model);
+    $.ajax({
+        type: 'post',  
+        url: url,
+        data: formData, 
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function (data) {  
+                toastr['success'](
+                      'تم اضافة '  + model +  ' بنجاح ',
+                      '  ادارة الموظفين ' ,
+                      {
+                        closeButton: true,
+                        tapToDismiss: false, 
+                        positionClass: 'toast-top-right',
+                        rtl: 'rtl'
+                      }
+                    );    
+
+                    $(".modal input").empty();
+                    $('.modal').modal('hide');   
+                    setInterval(function(){
+                      window.location.reload(1);
+                    }, 3000);
+        }, error: function (xhr) {
+
+        }
+    });   
+  });
+  
+
+
+  // change functional_group in new job form
+  $('#functional_group_new_job_id').on("change", function (e) {
+    e.stopPropagation();
+    var id = $('#functional_group_new_job_id').val();
+    $.ajax({
+      type: 'GET',
+      data: { id: id },
+      url: '/get_sub_group/',
+      success: function (data) {   
+            $('#sub_group_new_job_id').empty();
+            $('#sub_group_new_job_id').append('<option> .........</option>');
+            $('.clear_form').fadeOut();  
+            $.each(data,function(index,sub_group){
+              $('#sub_group_new_job_id').append('<option value="'+sub_group.id+'">  '+ sub_group.name +'</option>');
+            }) 
+      }
+    });
+  });
 
   
 });

@@ -16,11 +16,11 @@
 
         <div class="" style="margin: 10px auto;">
           <div class="form-group">
-            <img class="img-fluid rounded" src="{{asset('uploads/image/setting/')}}/{{$setting->logo}}" style="max-width: 100px; max-height: 100px; display: block; margin: 0 auto;" />
+            <img class="img-fluid rounded" src="{{asset('uploads/image/setting/')}}/{{Helper::settings()->logo}}" style="max-width: 100px; max-height: 100px; display: block; margin: 0 auto;" />
           </div>
         </div>
 
-        <h2 class="brand-text text-primary mb-2 mt-2 text-center"> {{$settings->name}}</h2>
+        <h2 class="brand-text text-primary mb-2 mt-2 text-center"> {{Helper::settings()->name}}</h2>
 
         <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
           @csrf

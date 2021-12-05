@@ -15,8 +15,8 @@ $configData = Helper::applClasses();
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title') -  {{$settings->name}}</title>
-  <link rel="shortcut icon" type="image/x-icon" href="{{asset('uploads/image/setting/')}}/{{$settings->logo}}">
+  <title>@yield('title') -   {{Helper::settings()->name}}</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('uploads/image/setting/')}}/ {{Helper::settings()->logo}}">
 
   {{-- Include core + vendor Styles --}}
   @include('panels/styles')

@@ -36,15 +36,15 @@
               alt="card-img-right"
             />
             <span class="brand-logo"> 
-              <img src="{{asset('uploads/image/setting/')}}/{{$settings->logo}}" style="padding: 5px; margin: 20px auto; display: block; max-width: 10%; border-radius: 10px;"> 
+              <img src="{{asset('uploads/image/setting/')}}/{{Helper::settings()->logo}}" style="padding: 5px; margin: 20px auto; display: block; max-width: 10%; border-radius: 10px;"> 
             </span>
             <div class="text-center">
-              <h1 class="mb-1 text-white"> مرحبا بك "{{Auth::user()->name}}" في برنامج {{$settings->name}}  </h1>
+              <h1 class="mb-1 text-white"> مرحبا بك "{{Auth::user()->name}}" في برنامج {{Helper::settings()->name}}  </h1>
               <p class="card-text m-auto w-75">
                 تمنياتنا بيوم جديد مليئ بالنجاح والتوفيق باذن الله .
               </p>
               <p class="card-text m-auto w-75" style="text-align: left; margin-top: 10px !important;">
-                <strong>مدير الادارة : الاستاذ /  {{$settings->manger}}</strong>
+                <strong>مدير الادارة : الاستاذ /  {{Helper::settings()->manger}} </strong>
               </p>
             </div>
           </div>

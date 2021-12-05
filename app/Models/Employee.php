@@ -43,7 +43,7 @@ class Employee extends Model
         return $this->belongsTo(MilitaryTreatment::class);
     }
 
-    public function qualification()
+    public function qualifications()
     {
         return $this->belongsToMany(Qualification::class)->withPivot('qualification_date', 'qualification_round', 'qualification_degree', 'qualification_major', 'qualification_source');
     }
@@ -95,6 +95,6 @@ class Employee extends Model
 
     public function currently_qualification()
     { 
-        return $this->qualification()->latest()->first();
+        return $this->qualifications()->get()->last();
     }
 }

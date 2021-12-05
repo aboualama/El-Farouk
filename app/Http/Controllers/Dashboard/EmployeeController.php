@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Dashboard;
   
 use App\Models\Employee; 
 use App\Models\SubGroup; 
+use App\Models\JobHistory;
 use Illuminate\Http\Request;  
 use App\Http\Controllers\Controller;
+use App\Models\EmployeeQualification;
 use App\Traits\EmployeeAddOtherDataTrait;
-use App\Traits\EmployeeEditOtherDataTrait;
 use Illuminate\Support\Facades\Validator;
+use App\Traits\EmployeeEditOtherDataTrait;
 
 class EmployeeController extends Controller
 {
@@ -74,9 +76,12 @@ class EmployeeController extends Controller
             'military_summons'      => $request->military_summons,
         ]);
         
-        // $this->editPhoneNumber($request, $employee->id);
+        $this->editPhoneNumber($request, $employee->id);
+        $this->editQualification($request, $employee->id);
+        $this->editJobHistory($request, $employee->id);
     }
  
+
     public function destroy(Employee $employee)
     { 
         $employee->delete();
@@ -94,7 +99,48 @@ class EmployeeController extends Controller
         return $sub_group;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function new_qualification(Request $request)
+    {   
+        $record = EmployeeQualification::create([
+            'qualification_source' => $request->qualification_source,
+            'qualification_major'  => $request->qualification_major,
+            'qualification_round'  => $request->qualification_round,
+            'qualification_degree' => $request->qualification_degree,
+            'qualification_date'   => $request->qualification_date,
+            'qualification_id'     => $request->qualification_id,
+            'employee_id'          => $request->id,
+            ]); 
+    }
+
+    public function new_job(Request $request)
+    {   
+        $record = JobHistory::create([
+            'job_function_name'   => $request->job_function_name,
+            'sub_group_id'        => $request->sub_group_id,
+            'join_date'           => $request->join_date,
+            'financial_degree_id' => $request->financial_degree_id, 
+            'degree_date'         => $request->degree_date,  
+            'job_style_id'        => $request->job_style_id,
+            'cader_id'            => $request->cader_id,
+            'job_status_id'       => $request->job_status_id,
+            'nomination_type_id'  => $request->nomination_type_id,
+            'employee_id'         => $request->id,
+            ]);  
+    }
     
-
-
+    
+    
 }

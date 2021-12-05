@@ -68,7 +68,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
   Route::get('employee/list/data', [EmployeeController::class,'getemployees'])->name('employee-datatables');    
   Route::get('get_sub_group', [EmployeeController::class,'get_sub_group'])->name('get_sub_group'); 
 
-
+  Route::post('new_job', [EmployeeController::class,'new_job']); 
+  Route::post('new_qualification', [EmployeeController::class,'new_qualification']);
 
 
   Route::resource('gender', GenderController::class); 

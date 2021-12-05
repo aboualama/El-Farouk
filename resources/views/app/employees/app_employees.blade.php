@@ -82,7 +82,7 @@
             <div class="col-12">
               {{-- <div class="card">  --}}
                 {{-- <div class="card-body"> --}}
-                  @include('app.employees.add')
+                  @include('app.employees.modal.add')
                 {{-- </div> --}}
               {{-- </div> --}}
             </div> 

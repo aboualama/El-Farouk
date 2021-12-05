@@ -24,7 +24,7 @@
   <!-- User Card & Plan Starts -->
   <div class="row">
     <!-- User Card starts-->
-    <div class="col-xl-9 col-lg-8 col-md-7">
+    <div class="col-xl-8 col-lg-8 col-md-8">
       <div class="card user-card">
         <div class="card-body">
           <h1 class="mb-2">عرض بيانات الموظف</h1>
@@ -117,25 +117,23 @@
       </div>
     </div>
     <!-- /User Card Ends-->
-
-
-
+ 
     
     <!-- Plan Card starts-->
-    <div class="col-xl-3 col-lg-4 col-md-5">
+    <div class="col-xl-4 col-lg-4 col-md-4">
       <div class="card plan-card border-primary">
         <div class="card-header d-flex justify-content-between align-items-center pt-75 pb-1">
           <h5 class="mb-0"> عرض بيانات المؤهل الحالي   </h5> 
         </div>
         <div class="card-body">
-          <div class="badge badge-light-primary">{{$employee->qualification->first()->name ?? null}}</div>
+          <div class="badge badge-light-dark">{{$employee->currently_qualification()->name ?? null}}</div>
           <ul class="list-unstyled my-1"> 
             <li>
               <div class="d-flex flex-wrap">
                 <div class="user-info-title w-8">
                   <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  التخصص :</span> 
                 </div>
-                <p class="card-text mb-0">{{ $employee->qualification->first()->pivot->qualification_major ?? null}}</p>
+                <p class="card-text mb-0">{{ $employee->currently_qualification()->pivot->qualification_major ?? null}}</p>
               </div>
             </li>
             <li> 
@@ -143,7 +141,7 @@
                 <div class="user-info-title w-8"> 
                   <span class="card-text user-info-title font-weight-bold mb-0">التاريخ :</span>
                 </div>
-                <p class="card-text mb-0">{{$employee->qualification->first()->pivot->qualification_date ?? null}}</p>
+                <p class="card-text mb-0">{{$employee->currently_qualification()->pivot->qualification_date ?? null}}</p>
               </div>  
             </li>
             <li> 
@@ -151,7 +149,7 @@
                 <div class="user-info-title w-8"> 
                   <span class="card-text user-info-title font-weight-bold mb-0">الدور :</span>
                 </div>
-                <p class="card-text mb-0">{{$employee->qualification->first()->pivot->qualification_round ?? null}}</p>
+                <p class="card-text mb-0">{{$employee->currently_qualification()->pivot->qualification_round ?? null}}</p>
               </div>  
             </li>
             <li class="my-25">
@@ -159,7 +157,7 @@
                 <div class="user-info-title w-8">
                   <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  الدرجة   :</span>
                 </div>
-                <p class="card-text mb-0">{{$employee->qualification->first()->pivot->qualification_degree ?? null}}</p>
+                <p class="card-text mb-0">{{$employee->currently_qualification()->pivot->qualification_degree ?? null}}</p>
               </div>
             </li>
             <li>
@@ -167,11 +165,11 @@
                 <div class="user-info-title w-8">
                   <span class="card-text user-info-title font-weight-bold mb-0 mr-1">   الجهة :</span>
                 </div>
-                <p class="card-text mb-0">{{$employee->qualification->first()->pivot->qualification_source ?? null}}</p>
+                <p class="card-text mb-0">{{$employee->currently_qualification()->pivot->qualification_source ?? null}}</p>
               </div>
             </li>
           </ul>
-          <button class="btn btn-primary text-center btn-block">اضافة مؤهل جديد  </button> 
+          <button class="btn btn-primary text-center btn-block" data-toggle="modal" data-target="#new-qualifaction">اضافة مؤهل جديد  </button>  
         </div>
       </div>
     </div>
@@ -182,14 +180,14 @@
   <!-- User Timeline & Permissions Starts -->
   <div class="row">
     <!-- information starts -->
-    <div class="col-md-9">
+    <div class="col-md-8">
       <div class="card">
         <div class="card-header">
           <h4 class="card-title mb-2">الوظائف  </h4>
         </div>
         <div class="card-body">
           <ul class="timeline">
-            @forelse ($employee->jobs_history as $jobs) 
+            @forelse ($employee->jobs_history->sortByDesc('created_at') as $jobs) 
               
             <li class="timeline-item">
               <span class="timeline-point timeline-point-indicator 
@@ -198,12 +196,15 @@
                   echo $arr[array_rand($arr, 1)]; 
                 @endphp">
               </span>
+              @if ($loop->first) 
+                <span class="timeline-event-time badge badge-light-success">الوظيفة الحالية</span>
+              @endif
               <div class="timeline-event">
                 <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                  <h6> {{$jobs->job_function_name}} - المجموعة {{$jobs->sub_group->functional_group->name}}  - {{$jobs->sub_group->name}} </h6>
+                  <h6> {{$jobs->job_function_name ?? null}} - المجموعة {{$jobs->sub_group->functional_group->name ?? null}}  - {{$jobs->sub_group->name ?? null}} </h6>
                   <span class="timeline-event-time">{{date("Y-m-d", strtotime($jobs->join_date)) }}</span>
                 </div>
-                <p class="{{($loop->last)  ? 'mb-0' : ''}} ">الكادر {{$jobs->cader->name}} - الدرجة الوظيفية {{$jobs->financial_degree->name}}.</p>
+                <p class="{{($loop->last)  ? 'mb-0' : ''}} ">الكادر {{$jobs->cader->name ?? null}} - الدرجة الوظيفية {{$jobs->financial_degree->name ?? null}}.</p>
               </div>
             </li>  
 
@@ -216,20 +217,20 @@
     </div>
     <!-- information Ends -->
     <!-- Plan Card starts-->
-      <div class="col-xl-3 col-lg-4 col-md-5">
+      <div class="col-xl-4 col-lg-4 col-md-4">
         <div class="card plan-card border-primary">
           <div class="card-header d-flex justify-content-between align-items-center pt-75 pb-1">
             <h5 class="mb-0"> عرض بيانات الوظيفة الحالية   </h5> 
           </div>
           <div class="card-body">
-            <div class="badge badge-light-primary">المجموعة {{$employee->jobs_history->first()->sub_group->functional_group->name ?? null}} - {{$employee->jobs_history->first()->sub_group->name ?? null}}</div>
+            <div class="badge badge-light-primary">المجموعة {{$employee->currently_job()->sub_group->functional_group->name ?? null}} - {{$employee->currently_job()->sub_group->name ?? null}}</div>
             <ul class="list-unstyled my-1">
               <li>
                 <div class="d-flex flex-wrap">
                   <div class="user-info-title w-11">
                     <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  المسمي الوظيفي :</span>
                   </div>
-                  <p class="card-text mb-0">{{$employee->jobs_history->first()->job_function_name ?? null}}</p>
+                  <p class="card-text mb-0">{{$employee->currently_job()->job_function_name ?? null}}</p>
                 </div>
               </li>
               <li class="my-25">
@@ -237,7 +238,7 @@
                   <div class="user-info-title w-11">
                     <span class="card-text user-info-title font-weight-bold mb-0 mr-1"> اسلوب شغل الوظيفة  :</span>
                   </div>
-                  <p class="card-text mb-0">{{$employee->jobs_history->first()->job_style->name ?? null}}</p>
+                  <p class="card-text mb-0">{{$employee->currently_job()->job_style->name ?? null}}</p>
                 </div>
               </li>
               <li class="my-25">
@@ -245,7 +246,7 @@
                   <div class="user-info-title w-11">
                     <span class="card-text user-info-title font-weight-bold mb-0 mr-1">   نوع التعيين  :</span>
                   </div>
-                  <p class="card-text mb-0">{{$employee->jobs_history->first()->nomination_type->name ?? null}}</p>
+                  <p class="card-text mb-0">{{$employee->currently_job()->nomination_type->name ?? null}}</p>
                 </div>
               </li>
               <li class="my-25">
@@ -253,7 +254,7 @@
                   <div class="user-info-title w-11">
                     <span class="card-text user-info-title font-weight-bold mb-0 mr-1"> الكادر  :</span>
                   </div>
-                  <p class="card-text mb-0">{{$employee->jobs_history->first()->cader->name ?? null}}</p>
+                  <p class="card-text mb-0">{{$employee->currently_job()->cader->name ?? null}}</p>
                 </div>
               </li>
               <li>
@@ -261,7 +262,7 @@
                   <div class="user-info-title w-11">
                     <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  الدرجة المالية :</span>
                   </div>
-                  <p class="card-text mb-0">{{$employee->jobs_history->first()->financial_degree->name ?? null}}</p>
+                  <p class="card-text mb-0">{{$employee->currently_job()->financial_degree->name ?? null}}</p>
                 </div>
               </li>
               <li>
@@ -269,11 +270,11 @@
                   <div class="user-info-title w-11">
                     <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  الحالة الوظيفية  :</span>
                   </div>
-                  <p class="card-text mb-0">{{$employee->jobs_history->first()->job_status->name ?? null}}</p>
+                  <p class="card-text mb-0">{{$employee->currently_job()->job_status->name ?? null}}</p>
                 </div>
               </li>
             </ul>
-            <button class="btn btn-primary text-center btn-block">اضافة وظيفة جديدة  </button> 
+            <button class="btn btn-primary text-center btn-block" data-toggle="modal" data-target="#new-job">اضافة وظيفة جديدة  </button>  
           </div>
         </div>
       </div>
@@ -328,7 +329,7 @@
             <div class="col-12" >
               <div id="edit-div-model">   
                 {{-- <div class="card-body"> --}}
-                   @include('app.employees.edit') 
+                   @include('app.employees.modal.edit') 
                 {{-- </div> --}}
               </div>
             </div> 
@@ -337,7 +338,61 @@
     </div>
   </div>
 </div> 
-<!-- Modal category-->
+<!-- Modal edit_employee-->
+
+
+
+
+
+
+
+
+
+
+<!-- Modal new_qualifaction -->
+<div class="modal fade text-left" id="new-qualifaction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-secondary" id="myModalLabel17">تعديل البيانات التعليمية لـ:  {{$employee->first_name}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">    
+                {{-- <div class="card-body"> --}}
+                   @include('app.employees.modal.new-qualifaction') 
+                {{-- </div> --}} 
+        </div> 
+    </div>
+  </div>
+</div> 
+<!-- Modal new_qualifaction-->
+
+
+
+
+<!-- Modal new_job -->
+<div class="modal fade text-left" id="new-job" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-secondary" id="myModalLabel17">تعديل البيانات الوظيفية لـ:  {{$employee->first_name}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">    
+                {{-- <div class="card-body"> --}}
+                   @include('app.employees.modal.new-job') 
+                {{-- </div> --}} 
+        </div> 
+    </div>
+  </div>
+</div> 
+<!-- Modal new_job-->
+
+
 @endsection
 
 @section('vendor-script')

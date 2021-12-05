@@ -3,7 +3,7 @@ $configData = Helper::applClasses();
 @endphp
 <div class="main-menu menu-fixed {{($configData['theme'] === 'dark') ? 'menu-dark' : 'menu-light'}} menu-accordion menu-shadow" data-scroll-to-active="true">
   <span class="brand-logo"> 
-    <img src="{{asset('uploads/image/setting/')}}/{{$settings->logo}}" style="padding: 5px; margin: 10px auto; display: block; max-width: 60%; border-radius: 10px; max-height: 70px;"> 
+    <img src="{{asset('uploads/image/setting/')}}/{{Helper::settings()->logo}}" style="padding: 5px; margin: 10px auto; display: block; max-width: 60%; border-radius: 10px; max-height: 70px;"> 
   </span>
   <div class="navbar-header"> 
     
@@ -11,7 +11,7 @@ $configData = Helper::applClasses();
     <ul class="nav navbar-nav flex-row">
       <li class="nav-item mr-auto">
         <a class="navbar-brand" href="{{url('/')}}">
-          <h5 class="brand-text" style="padding-bottom: 7px; font-size: 1.2rem; padding-right: .5rem; padding-left: .5rem;">  {{$settings->name}}</h5> 
+          <h5 class="brand-text" style="padding-bottom: 7px; font-size: 1.2rem; padding-right: .5rem; padding-left: .5rem;">  {{Helper::settings()->name}}</h5> 
          
         </a>
       </li>
