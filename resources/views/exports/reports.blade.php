@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 col-12">
           <div class=" ">
-            <a type="trash" href="{{url('report')}}" class="model btn btn-icon btn-info m-2 p-2" style="width: 80%; margin: 1.5rem auto !important; display: block;"">  
+            <a type="trash" href="{{url('export_employees_sheet')}}" class="model btn btn-icon btn-info m-2 p-2" style="width: 80%; margin: 1.5rem auto !important; display: block;"">  
                معلومات الموظفين
             </a> 
           </div> 

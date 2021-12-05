@@ -15,20 +15,16 @@
   
               @foreach ($employee as $record) 
                   <tr>
-                    <td>{{$record->first_name}}</td> 
-                    <td>{{$record->gender->name}}</td>  
-                    <td>{{$record->health_status->name}}</td>   
-                    <td>{{$record->social_status->name}}</td>  
-                    <td>{{$record->military_treatment->name}}</td>  
+                    <td>{{$record->first_name ?? null}}</td> 
+                    <td>{{$record->gender->name ?? null}}</td>  
+                    <td>{{$record->health_status->name ?? null}}</td>   
+                    <td>{{$record->social_status->name ?? null}}</td>  
+                    <td>{{$record->military_treatment->name ?? null}}</td>  
                     <td>
-                        @foreach($record->phones as $phone)
-                         {{ $phone->number }} -  
-                        @endforeach
+                      {{$record->phones->first()->number ?? null}}
                     </td>   
-                    <td>
-                        @foreach($record->qualification as $qualification)
-                         {{ $qualification->name }} 
-                        @endforeach
+                    <td> 
+                      {{$record->currently_qualification()->name ?? null}} 
                     </td>   
                   </tr>
               @endforeach

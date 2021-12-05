@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
   
 
   Route::get('reports', [ReportController::class,'index'])->name('app-reports'); 
-  Route::get('export_employees_sheet', [ReportController::class,'export_employees_sheet']);
+  Route::get('export_employees_sheet', [ReportController::class,'export_employees_sheet'])->name('export_employees_sheet'); 
   Route::get('employee_receipt_work/{id}', [ReportController::class,'employee_receipt_work']);
   
   
