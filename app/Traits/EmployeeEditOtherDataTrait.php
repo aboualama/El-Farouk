@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Phone; 
 use App\Models\JobHistory;
+use App\Models\ResidenceAddress;
 use App\Models\EmployeeQualification;
 
  
@@ -58,27 +59,29 @@ trait EmployeeEditOtherDataTrait {
     }
 
 
-
-
-
-
-
-    
-    
-    // public function editQualification($request , $id){
-
-    //     dd($request->all());
-    //     $record = EmployeeQualification::where('employee_id' , $id)->latest()->first()->delete();  
+      
+    public function editResidenceAddress($request , $id){  
+        $record = ResidenceAddress::where('employee_id' , $id)->latest()->first();  
+        if($record){
+           $record->forceDelete();
+        }
+        ResidenceAddress::create([
+            'residence_address' => $request->residence_address,
+            'residence_center'  => $request->residence_center,
+            'residence_city'    => $request->residence_city,
+            'employee_id'       => $id,
+            ]);    
+    }
  
-    //     EmployeeQualification::create([
-    //         'qualification_source' => $request->qualification_source,
-    //         'qualification_major'  => $request->qualification_major,
-    //         'qualification_round'  => $request->qualification_round,
-    //         'qualification_degree' => $request->qualification_degree,
-    //         'qualification_date'   => $request->qualification_date,
-    //         'qualification_id'     => $request->qualification_id,
-    //         'employee_id'          => $id,
-    //         ]);     
-    // }
+ 
+
+    public function editEmployeeData($request , $id){ 
+
+        $this->editPhoneNumber($request, $id);
+        $this->editQualification($request, $id);
+        $this->editJobHistory($request, $id);
+        $this->editResidenceAddress($request, $id);
+
+    }
 
 } 

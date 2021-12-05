@@ -76,9 +76,7 @@ class EmployeeController extends Controller
             'military_summons'      => $request->military_summons,
         ]);
         
-        $this->editPhoneNumber($request, $employee->id);
-        $this->editQualification($request, $employee->id);
-        $this->editJobHistory($request, $employee->id);
+        $this->editEmployeeData($request, $employee->id); 
     }
  
 
