@@ -230,7 +230,7 @@
                   <div class="user-info-title w-11">
                     <span class="card-text user-info-title font-weight-bold mb-0 mr-1">  المسمي الوظيفي :</span>
                   </div>
-                  <p class="card-text mb-0">{{$employee->currently_job()->job_function_name ?? null}}</p>
+                  <p class="card-text mb-0">{{$employee->currently_job()->job_function_name ?? null}} {{$employee->currently_job()->id ?? null}}</p>
                 </div>
               </li>
               <li class="my-25">

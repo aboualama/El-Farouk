@@ -85,7 +85,7 @@ class Employee extends Model
 
     public function currently_job()
     { 
-        return $this->jobs_history()->latest()->first();
+        return $this->jobs_history()->where('currently', 1)->first();
     }
 
     public function currently_address()
@@ -97,4 +97,9 @@ class Employee extends Model
     { 
         return $this->qualifications()->get()->last();
     }
+
+    public function latestActivity()
+{
+    return $this->hasOne(JobHistory::class)->latest();
+}
 }

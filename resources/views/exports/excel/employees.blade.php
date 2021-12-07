@@ -2,6 +2,7 @@
         <table class="table table-bordered">
             <thead>
               <tr>
+                <th class="text-center"> م</th>
                 <th class="text-center"> الاسم الاول</th>
                 <th class="text-center"> النوع</th>
                 <th class="text-center"> الحالة الصحية</th>
@@ -13,8 +14,9 @@
             </thead>
             <tbody>
   
-              @foreach ($employee as $record) 
+              @foreach ($employee as $i => $record) 
                   <tr>
+                    <td>{{$i + 1}}</td> 
                     <td>{{$record->first_name ?? null}}</td> 
                     <td>{{$record->gender->name ?? null}}</td>  
                     <td>{{$record->health_status->name ?? null}}</td>   

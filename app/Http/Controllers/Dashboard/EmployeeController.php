@@ -125,6 +125,7 @@ class EmployeeController extends Controller
 
     public function new_job(Request $request)
     {   
+        JobHistory::where('employee_id' , $request->id)->where('currently', 1)->update(['currently' => 0]);
         $record = JobHistory::create([
             'job_function_name'   => $request->job_function_name,
             'sub_group_id'        => $request->sub_group_id,
@@ -136,6 +137,7 @@ class EmployeeController extends Controller
             'job_status_id'       => $request->job_status_id,
             'nomination_type_id'  => $request->nomination_type_id,
             'employee_id'         => $request->id,
+            'currently'           => 1,
             ]);  
     }
     

@@ -22,6 +22,7 @@ class CreateJobHistoryTable extends Migration {
 			$table->foreignId('job_status_id')->nullable();
 			$table->foreignId('job_style_id')->nullable();
 			$table->foreignId('sub_group_id')->nullable();
+			$table->boolean('currently')->nullable();
 		});
 	}
 

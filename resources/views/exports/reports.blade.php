@@ -36,22 +36,22 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 col-12">
           <div class=" ">
-            <a type="trash" href="{{url('export_employees_sheet')}}" class="model btn btn-icon btn-info m-2 p-2" style="width: 80%; margin: 1.5rem auto !important; display: block;"">  
-               معلومات الموظفين
+            <a type="trash" href="{{url('export_employees_sheet')}}" class="model btn btn-icon btn-info p-2" style="width: 90%;">  
+               معلومات جميع الموظفين
             </a> 
           </div> 
         </div>
         <div class="col-md-4 col-sm-12 col-12">
           <div class=" ">
-            <a type="trash" href="{{url('report')}}" class="model btn btn-icon btn-success m-2 p-2" style="width: 80%; margin: 1.5rem auto !important; display: block;"">  
-              معلومات الموظفين
+            <a type="trash" href="{{url('export_empl_cader_sheet')}}" class="model btn btn-icon btn-success p-2" style="width: 90%;">  
+                 الموظفين بالكادر العام
             </a> 
           </div> 
         </div> 
         <div class="col-md-4 col-sm-12 col-12">
           <div class=" ">
-            <a type="trash" href="{{url('report')}}" class="model btn btn-icon btn-warning m-2 p-2" style="width: 80%; margin: 1.5rem auto !important; display: block;"">  
-              معلومات الموظفين
+            <a href="{{url('export_empl_cader_sub_sheet')}}" class=" btn btn-icon btn-warning p-2"  style="width: 90%;">  
+               الموظفين العاملين بالوظائف الاشرافية
             </a> 
           </div> 
         </div> 

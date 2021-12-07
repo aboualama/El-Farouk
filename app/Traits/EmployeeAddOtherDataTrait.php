@@ -60,6 +60,7 @@ trait EmployeeAddOtherDataTrait {
             'job_status_id'       => $request->job_status_id,
             'nomination_type_id'  => $request->nomination_type_id,
             'employee_id'         => $id,
+            'currently'           => 1,
             ]);    
     }
 

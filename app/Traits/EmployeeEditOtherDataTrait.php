@@ -40,7 +40,10 @@ trait EmployeeEditOtherDataTrait {
 
     
     public function editJobHistory($request , $id){
-        $record = JobHistory::where('employee_id' , $id)->latest()->first();  
+        
+        JobHistory::where('employee_id' , $id)->where('currently', 1)->update(['currently' => 0]);
+
+        $record = JobHistory::where('employee_id' , $id)->where('currently', 1)->first();
         if($record){
            $record->forceDelete();
         }
@@ -55,6 +58,7 @@ trait EmployeeEditOtherDataTrait {
             'job_status_id'       => $request->job_status_id,
             'nomination_type_id'  => $request->nomination_type_id,
             'employee_id'         => $id,
+            'currently'           => 1,
             ]);     
     }
 
